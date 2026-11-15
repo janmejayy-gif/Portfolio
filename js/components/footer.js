@@ -24,9 +24,9 @@ window.Components.renderFooter = function(containerId, data) {
           </div>
         </div>
 
-        <!-- Center Note: Theme & Philosophy -->
+        <!-- Center Note: Philosophy -->
         <div class="text-xs text-slate-500 text-center font-mono">
-          <span>Subtle White Ambiance • Clean Code • Problem Solver</span>
+          <span>Clean Code • Problem Solver</span>
         </div>
 
         <!-- Copyright -->
