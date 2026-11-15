@@ -268,3 +268,37 @@ select:focus-visible {
     animation: none !important;
   }
 }
+
+
+/* Mobile Responsiveness & Overflow Prevention */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Touch Target Minimum Sizes for Mobile (320px - 480px) */
+@media (max-width: 640px) {
+  .btn-primary,
+  .btn-secondary,
+  .filter-btn,
+  .nav-item,
+  .mobile-nav-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Prevent awkward card padding on tiny screens (320px) */
+  .glass-card {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+/* Content Container Constraints for Ultra-Wide Displays (>1440px) */
+@media (min-width: 1536px) {
+  .max-w-5xl, .max-w-6xl {
+    max-width: 1200px;
+  }
+}
