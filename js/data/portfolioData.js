@@ -4,15 +4,17 @@ window.PORTFOLIO_DATA = {
   personal: {
     name: "Janmejay Tiwari",
     brandName: "JANMEJAY",
-    title: "Full-Stack Developer",
+    role: "Full-Stack Developer",
+    supportingIdentity: "AI/ML & Data Science Enthusiast",
     positioning: "Full-Stack Developer | AI/ML & Data Science Enthusiast",
     statusBadge: "Available for Full-Stack & SDE Roles",
+    headline: "Architecting Scalable Web Systems & Intelligent Data Solutions",
+    conciseIntro: "Hi, I'm Janmejay Tiwari. I build responsive, end-to-end web applications and engineer data-driven solutions using modern full-stack architectures and machine learning.",
     location: "Lucknow, Uttar Pradesh, India",
-    email: "janmejaytiwari@gmail.com", // Professional placeholder / contact email
+    email: "janmejaytiwari@gmail.com",
     github: "https://github.com",
     linkedin: "https://linkedin.com",
-    resumeUrl: "#contact", // Connect to contact / downloadable asset
-    shortBio: "Passionate Full-Stack Developer and Computer Science undergraduate specializing in Data Science. Skilled in building resilient, scalable web applications and exploring data-driven machine learning solutions to solve practical, real-world problems."
+    resumeUrl: "#contact"
   },
 
   navigation: [
@@ -25,46 +27,56 @@ window.PORTFOLIO_DATA = {
     { label: "Contact", href: "#contact" }
   ],
 
-  education: {
-    institution: "Goel Institute of Technology & Management, Lucknow",
-    degree: "Bachelor of Technology (B.Tech)",
-    branch: "Computer Science & Engineering (Data Science)",
-    status: "Third-Year Undergraduate",
-    duration: "2022 – 2026",
-    focus: "Data Structures & Algorithms, Full-Stack Web Development, Machine Learning, Database Management Systems"
+  about: {
+    narrative: [
+      "I am a dedicated Full-Stack Developer with a deep interest in software architecture, algorithm design, and applied machine learning. Currently pursuing my Bachelor of Technology in Computer Science & Engineering (Data Science) at Goel Institute of Technology & Management, Lucknow, I focus on transforming complex system requirements into clean, scalable, and responsive digital products.",
+      "My engineering philosophy centers around continuous problem solving. Whether designing modular RESTful APIs with Node.js and Java, structuring intuitive client interfaces in React and Tailwind CSS, or extracting actionable patterns using Python and Scikit-learn, I prioritize maintainability, performance, and real-world utility.",
+      "I actively explore modern web frameworks, data modeling techniques, and predictive algorithms, constantly expanding my technical breadth to develop tools that create tangible impact across critical domains like agriculture, land administration, and urban logistics."
+    ],
+    pillars: [
+      { title: "Full-Stack Engineering", desc: "End-to-end web architecture from reactive frontend interfaces to resilient backend APIs." },
+      { title: "Algorithmic Thinking", desc: "Strong focus on Data Structures & Algorithms, optimal complexity, and clean code." },
+      { title: "Data Science & AI", desc: "Data wrangling, statistical analysis, and applied predictive modeling in Python." }
+    ]
   },
 
   skills: {
     frontend: [
-      { name: "HTML", level: "Proficient" },
-      { name: "CSS", level: "Proficient" },
-      { name: "JavaScript", level: "Proficient" },
-      { name: "React", level: "Proficient" },
-      { name: "Tailwind CSS", level: "Proficient" }
+      { name: "React", detail: "Component Architecture & Hooks" },
+      { name: "JavaScript (ES6+)", detail: "Modern Syntax & Async Flow" },
+      { name: "Tailwind CSS", detail: "Responsive & Modern UI" },
+      { name: "HTML5", detail: "Semantic Markup & Accessibility" },
+      { name: "CSS3", detail: "Flexbox, Grid & Animations" }
     ],
     backend: [
-      { name: "Java", level: "Core & Advanced" },
-      { name: "Spring Boot", level: "Intermediate" },
-      { name: "Node.js", level: "Proficient" },
-      { name: "REST APIs", level: "Proficient" }
+      { name: "Node.js", detail: "Runtime Environment & Event Loop" },
+      { name: "Express.js", detail: "Server Routing & Middleware" },
+      { name: "Spring Boot", detail: "Java Enterprise Framework" },
+      { name: "REST APIs", detail: "API Design, Auth & Integration" }
     ],
-    aiMlDataScience: [
-      { name: "Python", level: "Proficient" },
-      { name: "Pandas", level: "Data Processing" },
-      { name: "NumPy", level: "Numerical Analysis" },
-      { name: "Scikit-learn", level: "Model Development" },
-      { name: "Matplotlib", level: "Visualization" }
+    programmingLanguages: [
+      { name: "Java", detail: "Core, OOPs, Collections & DSA" },
+      { name: "Python", detail: "Data Analysis & Scripting" },
+      { name: "JavaScript", detail: "Full-Stack Web Development" },
+      { name: "SQL", detail: "Relational Queries & Schemas" }
     ],
     database: [
-      { name: "MongoDB", level: "NoSQL" },
-      { name: "MySQL", level: "RDBMS" },
-      { name: "SQL", level: "Query Optimization" }
+      { name: "MongoDB", detail: "Document Storage & Mongoose" },
+      { name: "MySQL", detail: "Relational Database Management" },
+      { name: "SQL", detail: "Schema Design & Indexing" }
     ],
-    tools: [
-      { name: "Git", level: "Version Control" },
-      { name: "GitHub", level: "Collaboration" },
-      { name: "VS Code", level: "Primary IDE" },
-      { name: "Postman", level: "API Testing" }
+    aiAndDataScience: [
+      { name: "Python", detail: "Scientific & Analytical Libraries" },
+      { name: "Pandas", detail: "Data Manipulation & Cleaning" },
+      { name: "NumPy", detail: "Multidimensional Vector Arrays" },
+      { name: "Scikit-learn", detail: "Supervised & Unsupervised ML" },
+      { name: "Matplotlib", detail: "Data & Statistical Visualization" }
+    ],
+    developmentTools: [
+      { name: "Git", detail: "Distributed Version Control" },
+      { name: "GitHub", detail: "Repository Management & Collaboration" },
+      { name: "VS Code", detail: "Primary Integrated Development Environment" },
+      { name: "Postman", detail: "API Testing & Endpoint Documentation" }
     ]
   },
 
@@ -73,87 +85,96 @@ window.PORTFOLIO_DATA = {
       id: "jalrakshak",
       name: "JALRAKSHAK",
       category: "fullstack",
-      categoryLabel: "Smart Agriculture & IoT",
-      summary: "Agriculture-focused smart irrigation and water management platform.",
-      problemStatement: "Traditional irrigation causes acute water wastage, soil over-saturation, and uneven crop yield due to lack of localized soil moisture data and automated scheduling.",
-      solutionOverview: "Engineered an intelligent water distribution architecture that monitors moisture parameters, calculates optimal crop water requirement, and enables automated conservation scheduling.",
-      technologies: ["React", "Node.js", "Express", "MongoDB", "IoT Sensors", "Tailwind CSS"],
+      categoryLabel: "Smart Agriculture & Water Management",
+      summary: "Agriculture-focused smart irrigation and water conservation management platform.",
+      problemStatement: "Traditional agricultural irrigation results in severe water depletion, unequal distribution across farmland sectors, and crop damage due to the absence of continuous soil telemetry and intelligent scheduling.",
+      solution: "Architected an integrated IoT-compatible software platform that ingests real-time soil moisture and environmental metrics, automatically computes precise hydration requirements, and schedules optimal water release to minimize waste and boost crop yield.",
+      techStack: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "REST APIs"],
       githubUrl: "https://github.com",
-      demoUrl: null, // Marked unavailable honestly, no fake link
-      status: "Active Development",
-      featured: true
+      demoUrl: null,
+      status: "Active Prototype",
+      verified: true
     },
     {
       id: "agrifair",
       name: "AgriFair",
       category: "fullstack",
-      categoryLabel: "Agritech Marketplace",
-      summary: "Agriculture-focused digital platform connecting producers directly with markets.",
-      problemStatement: "Smallholder farmers face fragmented supply chains, lack of fair market pricing transparency, and heavy intermediary commissions.",
-      solutionOverview: "Developed a comprehensive digital marketplace facilitating direct farmer-to-consumer transactions, transparent crop listing, and real-time agricultural price tracking.",
-      technologies: ["React", "Node.js", "MongoDB", "REST APIs", "Tailwind CSS"],
+      categoryLabel: "Agritech Marketplace Platform",
+      summary: "Agriculture-focused digital marketplace empowering farmers with fair trade access.",
+      problemStatement: "Small-scale agricultural producers are constrained by multi-tier middlemen, lack of real-time wholesale price transparency, and high logistic friction that diminishes farmer profits.",
+      solution: "Engineered a decentralized marketplace architecture connecting agricultural producers directly to commercial buyers and consumers, featuring transparent produce cataloging, live price indexing, and secure order inquiry channels.",
+      techStack: ["React", "JavaScript", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
       githubUrl: "https://github.com",
       demoUrl: null,
       status: "Prototype Ready",
-      featured: true
+      verified: true
     },
     {
       id: "ladi",
       name: "LADI",
       category: "aiml",
-      categoryLabel: "Land Monitoring & Predictive Analytics",
+      categoryLabel: "Predictive Analytics & Land Governance",
       summary: "Land acquisition monitoring and risk prediction platform.",
-      problemStatement: "Land acquisition processes suffer from opaque dispute histories, developmental compliance bottlenecks, and unpredictable financial/legal delays.",
-      solutionOverview: "Built a predictive data-driven platform that aggregates geospatial land records and uses analytical models to quantify acquisition risk factors and timeline projections.",
-      technologies: ["Python", "Pandas", "Scikit-learn", "JavaScript", "REST APIs", "SQL"],
+      problemStatement: "Infrastructure and development projects frequently stall because historical land acquisition data, legal disputes, and regulatory compliance risks are siloed and difficult to forecast.",
+      solution: "Developed an analytical monitoring engine that evaluates regional land acquisition parameters, cross-references historical dispute datasets, and generates data-backed risk scores to identify delays before capital commitment.",
+      techStack: ["Python", "Pandas", "Scikit-learn", "JavaScript", "SQL", "Tailwind CSS"],
       githubUrl: "https://github.com",
       demoUrl: null,
-      status: "Research & Prototype",
-      featured: true
+      status: "Analytical Model & Prototype",
+      verified: true
     },
     {
       id: "wait",
       name: "WAIT",
       category: "fullstack",
-      categoryLabel: "Transit & Urban Mobility",
+      categoryLabel: "Transit Telemetry & Urban Mobility",
       summary: "Public transport bus scheduling and seat availability concept.",
-      problemStatement: "Daily public transit commuters endure long unpredictable waiting times and overcrowded buses due to absent real-time telemetry and capacity metrics.",
-      solutionOverview: "Designed an interactive urban mobility platform offering real-time transit bus tracking, anticipated arrival estimates, and live passenger occupancy previews.",
-      technologies: ["JavaScript", "React", "Node.js", "Express", "Tailwind CSS"],
+      problemStatement: "Urban commuters face prolonged, unpredictable transit waits and dangerous over-crowding due to lack of real-time passenger occupancy telemetry and dynamic schedule updates.",
+      solution: "Designed a lightweight public transport monitoring web interface that provides live route scheduling, dynamic ETA calculations, and transparent seat availability indicators to streamline daily commuter transit.",
+      techStack: ["React", "Node.js", "Express", "JavaScript", "Tailwind CSS", "REST APIs"],
       githubUrl: "https://github.com",
       demoUrl: null,
       status: "Concept & Interface",
-      featured: true
+      verified: true
     }
   ],
 
-  experience: [
+  education: {
+    institution: "Goel Institute of Technology & Management, Lucknow",
+    degree: "Bachelor of Technology (B.Tech)",
+    branch: "Computer Science & Engineering (Data Science)",
+    status: "Third-Year Undergraduate",
+    duration: "2022 – 2026",
+    details: "Core focus on Data Structures & Algorithms, Database Management Systems, Object-Oriented Software Design in Java, Machine Learning fundamentals, and Software Engineering methodologies."
+  },
+
+  experienceAndAchievements: [
     {
-      title: "Technical Hackathons & Innovation Contests",
-      organization: "National & Institutional Hackathons",
-      type: "Hackathon Competitions",
+      title: "Technical Hackathons & Collaborative Sprints",
+      organization: "Institutional & Inter-College Hackathons",
+      type: "Competitive Hackathons",
       period: "2023 – Present",
-      description: "Collaborated in high-intensity developer teams to ideate and prototype software solutions in agritech (Jalrakshak, AgriFair) and urban logistics within 24-48 hour sprints."
+      description: "Spearheaded frontend and backend architecture for agritech prototypes (JALRAKSHAK, AgriFair) and urban logistics concepts under rapid 24-48 hour prototyping sprints. Collaborated on API design, schema structuring, and live solution pitches."
     },
     {
-      title: "Full-Stack Development & Project Engineering",
-      organization: "Independent & Academic Initiatives",
-      type: "Technical Projects",
+      title: "Full-Stack Project Engineering",
+      organization: "Academic & Independent Development",
+      type: "Software Development",
       period: "2023 – Present",
-      description: "Architected end-to-end full-stack web applications with React, Node.js, and Java backend architectures; implemented REST APIs and integrated relational/NoSQL databases."
+      description: "Built full-stack web applications implementing responsive React user interfaces, modular Express/Node.js and Java backends, authenticated REST APIs, and database modeling with MongoDB and MySQL."
     },
     {
-      title: "Technical Lead & Campus Coding Initiatives",
+      title: "Coding Community & Technical Peer Collaboration",
       organization: "Goel Institute of Technology & Management",
-      type: "Leadership & Community",
+      type: "Technical Leadership & Community",
       period: "2023 – Present",
-      description: "Active contributor to campus technical peer groups, participating in coding challenges, competitive programming in Java, and collaborative data science discussions."
+      description: "Active member of campus developer circles, engaging in algorithmic problem solving in Java, participating in coding challenges, and organizing peer study sessions on Data Science and Web Development."
     }
   ],
 
   socialLinks: [
     { name: "GitHub", url: "https://github.com", icon: "github", label: "Visit GitHub Profile" },
     { name: "LinkedIn", url: "https://linkedin.com", icon: "linkedin", label: "Connect on LinkedIn" },
-    { name: "Email", url: "mailto:janmejaytiwari@gmail.com", icon: "mail", label: "Send an Email", action: "copy" }
+    { name: "Email", url: "mailto:janmejaytiwari@gmail.com", icon: "mail", label: "Send Email" }
   ]
 };

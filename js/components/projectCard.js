@@ -3,8 +3,9 @@
 window.Components = window.Components || {};
 
 window.Components.createProjectCard = function(project) {
-  const techChips = project.technologies.map(tech => `
-    <span class="px-2.5 py-1 rounded-lg bg-slate-100/90 text-slate-700 text-xs font-mono font-medium">
+  const stack = project.techStack || project.technologies || [];
+  const techChips = stack.map(tech => `
+    <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-mono font-medium border border-slate-200/60">
       ${tech}
     </span>
   `).join('');
@@ -14,49 +15,63 @@ window.Components.createProjectCard = function(project) {
          <span>Live Demo</span>
          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
        </a>`
-    : `<span class="text-xs text-slate-400 font-mono inline-flex items-center gap-1 cursor-default" title="Deployment in progress">
+    : `<span class="text-xs text-slate-400 font-mono inline-flex items-center gap-1.5 cursor-default" title="Deployment in progress / Demo available upon request">
          <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
          <span>Demo Pending</span>
        </span>`;
 
+  const githubButtonHtml = project.githubUrl
+    ? `<a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn-secondary px-3.5 py-2 rounded-xl text-xs font-medium inline-flex items-center gap-1.5 hover:text-slate-900 transition-colors">
+         <i data-lucide="github" class="w-3.5 h-3.5"></i>
+         <span>Repository</span>
+       </a>`
+    : `<span class="text-xs text-slate-400 font-mono">Internal Repo</span>`;
+
   return `
-    <div class="project-card glass-card rounded-3xl p-6 sm:p-8 bg-white/85 border border-slate-200/80 flex flex-col justify-between" data-category="${project.category}">
+    <div class="project-card glass-card rounded-3xl p-6 sm:p-8 bg-white/85 border border-slate-200/80 flex flex-col justify-between transition-all" data-category="${project.category}">
       <div>
-        <!-- Card Header: Category & Status -->
+        <!-- Card Header: Category Tag & Status -->
         <div class="flex items-center justify-between mb-4">
           <span class="px-3 py-1 rounded-md bg-slate-100 border border-slate-200 text-slate-800 text-xs font-mono font-semibold">
-            ${project.categoryLabel || 'Full-Stack'}
+            ${project.categoryLabel || 'Software Project'}
           </span>
-          <span class="text-[11px] font-mono px-2 py-0.5 rounded-md bg-emerald-50 border border-emerald-100 text-emerald-700 font-medium">
+          <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-emerald-50 border border-emerald-100/90 text-emerald-700 font-medium flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
             ${project.status}
           </span>
         </div>
 
         <!-- Project Title -->
-        <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2 tracking-tight">
+        <h3 class="text-2xl font-bold text-slate-900 mb-2 tracking-tight">
           ${project.name}
         </h3>
 
         <!-- Summary -->
-        <p class="text-slate-700 text-sm font-medium mb-4 leading-relaxed">
+        <p class="text-slate-600 text-sm mb-5 leading-relaxed">
           ${project.summary}
         </p>
 
-        <!-- Problem Statement Box -->
-        <div class="p-3.5 rounded-xl bg-rose-50/50 border border-rose-100/70 mb-3 text-xs leading-relaxed text-slate-700">
-          <span class="font-bold text-rose-800 uppercase tracking-wider block mb-1">Problem Statement:</span>
-          ${project.problemStatement}
+        <!-- Problem Statement -->
+        <div class="p-4 rounded-2xl bg-rose-50/50 border border-rose-100/80 mb-3 text-xs leading-relaxed text-slate-700">
+          <div class="flex items-center gap-1.5 font-bold text-rose-800 uppercase tracking-wider mb-1.5">
+            <i data-lucide="alert-circle" class="w-3.5 h-3.5 text-rose-600"></i>
+            <span>Problem Statement</span>
+          </div>
+          <p>${project.problemStatement}</p>
         </div>
 
-        <!-- Solution Overview Box -->
-        <div class="p-3.5 rounded-xl bg-indigo-50/50 border border-indigo-100/70 mb-6 text-xs leading-relaxed text-slate-700">
-          <span class="font-bold text-indigo-800 uppercase tracking-wider block mb-1">Solution Overview:</span>
-          ${project.solutionOverview}
+        <!-- Solution Overview -->
+        <div class="p-4 rounded-2xl bg-indigo-50/50 border border-indigo-100/80 mb-6 text-xs leading-relaxed text-slate-700">
+          <div class="flex items-center gap-1.5 font-bold text-indigo-800 uppercase tracking-wider mb-1.5">
+            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-indigo-600"></i>
+            <span>Solution</span>
+          </div>
+          <p>${project.solution || project.solutionOverview}</p>
         </div>
 
         <!-- Technologies Used -->
         <div class="mb-6">
-          <span class="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-2">Technologies Used:</span>
+          <span class="text-xs font-bold text-slate-800 uppercase tracking-wider block mb-2.5">Technologies Used:</span>
           <div class="flex flex-wrap gap-1.5">
             ${techChips}
           </div>
@@ -65,10 +80,7 @@ window.Components.createProjectCard = function(project) {
 
       <!-- Card Action Footer -->
       <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-        <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn-secondary px-3.5 py-2 rounded-xl text-xs font-medium inline-flex items-center gap-1.5 hover:text-slate-900 transition-colors">
-          <i data-lucide="github" class="w-3.5 h-3.5"></i>
-          <span>Repository</span>
-        </a>
+        ${githubButtonHtml}
         <div>
           ${demoButtonHtml}
         </div>
