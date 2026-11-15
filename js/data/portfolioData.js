@@ -139,14 +139,35 @@ window.PORTFOLIO_DATA = {
     }
   ],
 
-  education: {
-    institution: "Goel Institute of Technology & Management, Lucknow",
-    degree: "Bachelor of Technology (B.Tech)",
-    branch: "Computer Science & Engineering (Data Science)",
-    status: "Third-Year Undergraduate",
-    duration: "2022 – 2026",
-    details: "Core focus on Data Structures & Algorithms, Database Management Systems, Object-Oriented Software Design in Java, Machine Learning fundamentals, and Software Engineering methodologies."
-  },
+  education: [
+    {
+      degree: "Bachelor of Technology (B.Tech)",
+      branch: "Computer Science & Engineering (Data Science)",
+      institution: "Goel Institute of Technology & Management, Lucknow",
+      location: "Lucknow, Uttar Pradesh",
+      duration: "2024 – Present (2028)",
+      status: "Pursuing Undergraduate",
+      details: "Core focus on Data Structures & Algorithms, Java OOP, Full-Stack Web Systems, Database Management Systems, and Machine Learning foundations."
+    },
+    {
+      degree: "Class 12th (Higher Secondary Certificate)",
+      branch: "Science Stream",
+      institution: "Reckon Public Academy, Mumbai",
+      location: "Mumbai, Maharashtra",
+      duration: "2024",
+      status: "Completed",
+      details: "Senior secondary education with focus on Physics, Chemistry, Mathematics, and Computer Science fundamentals."
+    },
+    {
+      degree: "Class 10th (Secondary School Certificate)",
+      branch: "General Sciences & Mathematics",
+      institution: "St. Aloysius High School, Mumbai",
+      location: "Mumbai, Maharashtra",
+      duration: "2022",
+      status: "Completed",
+      details: "Secondary school education establishing foundational analytical mathematics and core academic sciences."
+    }
+  ],
 
   experienceAndAchievements: [
     {
