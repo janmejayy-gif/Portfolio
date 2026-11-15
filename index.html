@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Janmejay Tiwari | Java DSA & MERN Full-Stack Developer</title>
+  <meta name="description" content="Portfolio of Janmejay Tiwari - Java DSA Specialist and Full-Stack MERN Developer. Building performant web apps and solving algorithmic problems." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f5f7ff',
+              100: '#ebf0fe',
+              500: '#4f46e5',
+              600: '#4338ca',
+              700: '#3730a3',
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet (Subtle White Ambiance) -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="text-slate-800 antialiased selection:bg-slate-200">
+
+  <!-- Ambient Light Mesh & Grid Backgrounds -->
+  <div class="ambient-bg"></div>
+  <div class="ambient-grid"></div>
+
+  <!-- Header / Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-4">
+      <nav class="glass-card rounded-2xl px-5 py-3.5 flex items-center justify-between border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] bg-white/80 backdrop-blur-md">
+        
+        <!-- Logo / Name -->
+        <a href="#hero" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-slate-900 to-slate-700 flex items-center justify-center text-white font-mono font-bold text-sm shadow-sm group-hover:scale-105 transition-transform">
+            &lt;J/&gt;
+          </div>
+          <div>
+            <span class="font-bold text-slate-900 text-sm tracking-tight block">Janmejay Tiwari</span>
+            <span class="text-[10px] text-slate-500 font-mono tracking-wide uppercase">Java DSA • MERN</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600">
+          <a href="#about" class="hover:text-slate-900 transition-colors">About</a>
+          <a href="#dsa-stats" class="hover:text-slate-900 transition-colors flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+            DSA Highlights
+          </a>
+          <a href="#skills" class="hover:text-slate-900 transition-colors">Skills</a>
+          <a href="#projects" class="hover:text-slate-900 transition-colors">Projects</a>
+          <a href="#contact" class="hover:text-slate-900 transition-colors">Contact</a>
+        </div>
+
+        <!-- Action CTA -->
+        <div class="hidden md:flex items-center gap-3">
+          <a href="#contact" class="btn-primary text-xs font-semibold px-4 py-2.5 rounded-xl inline-flex items-center gap-1.5">
+            <span>Let's Connect</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Trigger -->
+        <button id="mobileMenuBtn" aria-label="Toggle Menu" class="md:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition-colors">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </nav>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobileMenu" class="hidden md:hidden mt-2 p-4 glass-card rounded-2xl border border-slate-200/80 bg-white/95 shadow-xl flex flex-col gap-3 text-sm font-medium">
+        <a href="#about" class="py-2 px-3 rounded-lg hover:bg-slate-50 text-slate-700">About</a>
+        <a href="#dsa-stats" class="py-2 px-3 rounded-lg hover:bg-slate-50 text-slate-700 flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-amber-500"></span> DSA Highlights
+        </a>
+        <a href="#skills" class="py-2 px-3 rounded-lg hover:bg-slate-50 text-slate-700">Skills</a>
+        <a href="#projects" class="py-2 px-3 rounded-lg hover:bg-slate-50 text-slate-700">Projects</a>
+        <a href="#contact" class="py-2 px-3 rounded-lg hover:bg-slate-50 text-slate-700">Contact</a>
+        <div class="pt-2 border-t border-slate-100">
+          <a href="#contact" class="btn-primary text-xs text-center py-2.5 rounded-xl block">Connect With Me</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="relative z-10">
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="pt-32 sm:pt-36 lg:pt-40 pb-20 px-4 sm:px-6">
+      <div class="max-w-5xl mx-auto text-center">
+
+        <!-- Status Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill border border-slate-200/90 text-xs font-medium text-slate-700 mb-8 shadow-sm">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span>Open to Software Engineering & Full-Stack Roles</span>
+        </div>
+
+        <!-- Signature Punchline Heading -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.12] mb-6">
+          Java mein <span class="bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 bg-clip-text text-transparent underline decoration-amber-200/60 decoration-wavy decoration-2">DSA hu</span>,<br />
+          Web mein <span class="bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">Full-Stack</span>.
+        </h1>
+
+        <!-- Subheading -->
+        <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-600 font-normal leading-relaxed mb-10">
+          I bridge algorithmic rigor with elegant full-stack engineering. Cracking complex data structures in <span class="text-slate-900 font-semibold">Java</span> with optimal time-space complexity while architecting resilient web applications with the <span class="text-slate-900 font-semibold">MERN stack</span>.
+        </p>
+
+        <!-- CTA Action Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-4 mb-16">
+          <a href="#projects" class="btn-primary px-6 py-3.5 rounded-xl text-sm font-semibold inline-flex items-center gap-2 shadow-md">
+            <span>Explore Projects</span>
+            <i data-lucide="arrow-down" class="w-4 h-4"></i>
+          </a>
+          <a href="#dsa-stats" class="btn-secondary px-6 py-3.5 rounded-xl text-sm font-semibold inline-flex items-center gap-2">
+            <i data-lucide="code-2" class="w-4 h-4 text-amber-600"></i>
+            <span>DSA Milestones</span>
+          </a>
+          <button onclick="copyText('janmejaytiwari@gmail.com', 'Email')" class="btn-secondary px-4 py-3.5 rounded-xl text-sm font-medium text-slate-600 hover:text-slate-900 inline-flex items-center gap-1.5" title="Copy Email">
+            <i data-lucide="mail" class="w-4 h-4 text-slate-500"></i>
+            <span>Email</span>
+          </button>
+        </div>
+
+        <!-- Interactive Code Snippet Window (Subtle Light IDE Showcase) -->
+        <div class="max-w-3xl mx-auto text-left">
+          <div class="glass-card rounded-2xl border border-slate-200/90 shadow-xl overflow-hidden bg-white/95">
+            
+            <!-- Window Title Bar -->
+            <div class="flex items-center justify-between px-4 py-3 bg-slate-50/80 border-b border-slate-200/70">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-400/80 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-400/80 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-400/80 inline-block"></span>
+                <span class="text-xs font-mono text-slate-400 ml-2 hidden sm:inline">dual-engine • java & mern</span>
+              </div>
+
+              <!-- Language Switcher Tabs -->
+              <div class="flex items-center rounded-lg p-0.5 bg-slate-200/60 text-xs font-medium font-mono">
+                <button data-target="code-java" class="code-tab-btn active px-3 py-1 rounded-md text-slate-900 bg-white shadow-xs transition-all">
+                  Solution.java
+                </button>
+                <button data-target="code-mern" class="code-tab-btn px-3 py-1 rounded-md text-slate-500 hover:text-slate-900 transition-all">
+                  apiServer.js
+                </button>
+              </div>
+            </div>
+
+            <!-- Code Body 1: Java DSA -->
+            <div id="code-java" class="code-panel p-5 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto text-slate-800">
+              <pre><code><span class="token-comment">// Optimal Binary Search & Two-Pointer Solver</span>
+<span class="token-kw">public class</span> <span class="token-type">Solution</span> {
+    <span class="token-comment">/**
+     * Time Complexity: O(log N) | Space Complexity: O(1)
+     */</span>
+    <span class="token-kw">public int</span> <span class="token-fn">searchRange</span>(<span class="token-type">int</span>[] nums, <span class="token-type">int</span> target) {
+        <span class="token-type">int</span> left = <span class="token-num">0</span>, right = nums.length - <span class="token-num">1</span>;
+        <span class="token-kw">while</span> (left &lt;= right) {
+            <span class="token-type">int</span> mid = left + (right - left) / <span class="token-num">2</span>;
+            <span class="token-kw">if</span> (nums[mid] == target) <span class="token-kw">return</span> mid;
+            <span class="token-kw">if</span> (nums[mid] &lt; target) left = mid + <span class="token-num">1</span>;
+            <span class="token-kw">else</span> right = mid - <span class="token-num">1</span>;
+        }
+        <span class="token-kw">return</span> -<span class="token-num">1</span>; <span class="token-comment">// Element not found</span>
+    }
+}</code></pre>
+            </div>
+
+            <!-- Code Body 2: MERN API -->
+            <div id="code-mern" class="code-panel p-5 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto text-slate-800 hidden">
+              <pre><code><span class="token-comment">// Express.js + MongoDB RESTful API Route with JWT Auth</span>
+<span class="token-kw">import</span> express <span class="token-kw">from</span> <span class="token-str">'express'</span>;
+<span class="token-kw">import</span> { User, Project } <span class="token-kw">from</span> <span class="token-str">'../models/schema.js'</span>;
+<span class="token-kw">import</span> { verifyToken } <span class="token-kw">from</span> <span class="token-str">'../middleware/auth.js'</span>;
+
+<span class="token-kw">const</span> router = express.Router();
+
+router.get(<span class="token-str">'/api/projects'</span>, verifyToken, <span class="token-kw">async</span> (req, res) => {
+    <span class="token-kw">try</span> {
+        <span class="token-kw">const</span> feed = <span class="token-kw">await</span> Project.find({ author: req.user.id })
+            .sort({ createdAt: -<span class="token-num">1</span> })
+            .lean();
+        <span class="token-kw">return</span> res.status(<span class="token-num">200</span>).json({ success: <span class="token-kw">true</span>, data: feed });
+    } <span class="token-kw">catch</span> (err) {
+        <span class="token-kw">return</span> res.status(<span class="token-num">500</span>).json({ error: <span class="token-str">'Internal Server Error'</span> });
+    }
+});</code></pre>
+            </div>
+
+            <!-- Bottom Badge Footer inside IDE -->
+            <div class="px-5 py-2.5 bg-slate-50/60 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-mono">
+              <div class="flex items-center gap-3">
+                <span class="flex items-center gap-1 text-emerald-600 font-semibold"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i> Clean Code</span>
+                <span class="hidden sm:inline">•</span>
+                <span class="hidden sm:inline">OOP Principles</span>
+                <span class="hidden sm:inline">•</span>
+                <span class="hidden sm:inline">REST Architecture</span>
+              </div>
+              <span class="text-slate-400">UTF-8</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 px-4 sm:px-6">
+      <div class="max-w-5xl mx-auto">
+        <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-200/80 bg-white/80">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-5 flex flex-col items-center text-center">
+              <div class="relative mb-4">
+                <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl bg-gradient-to-tr from-slate-100 to-indigo-50 border border-slate-200 flex items-center justify-center p-2 shadow-inner">
+                  <div class="w-full h-full rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 flex flex-col items-center justify-center text-white text-center p-4">
+                    <span class="text-3xl font-extrabold font-mono tracking-tighter mb-1">&lt;JT/&gt;</span>
+                    <span class="text-[11px] font-mono text-indigo-300">Janmejay Tiwari</span>
+                    <span class="text-[10px] text-slate-400 mt-1">Full-Stack & DSA</span>
+                  </div>
+                </div>
+                <div class="absolute -bottom-2 -right-2 px-3 py-1 rounded-full bg-white border border-slate-200 shadow-md text-[11px] font-semibold text-slate-800 flex items-center gap-1">
+                  <span class="w-2 h-2 rounded-full bg-amber-500"></span> Java SDE
+                </div>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900">Janmejay Tiwari</h3>
+              <p class="text-xs text-slate-500 font-mono mt-0.5">Problem Solver • Full Stack Developer</p>
+            </div>
+
+            <div class="lg:col-span-7">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-indigo-50 text-indigo-700 text-xs font-semibold uppercase tracking-wider mb-3">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                Philosophy & Craft
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-4 tracking-tight">
+                Where algorithmic efficiency meets clean user experience.
+              </h2>
+              <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-4">
+                My software engineering journey is grounded in strong problem-solving fundamentals. When writing code, I constantly evaluate <strong>time & space complexity</strong>, optimal memory allocation, and edge cases.
+              </p>
+              <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                On the web side, I take pride in crafting smooth, reactive user experiences with <strong>React.js & Tailwind CSS</strong>, powered by resilient, secure backend services with <strong>Node.js, Express, and MongoDB</strong>.
+              </p>
+
+              <!-- Highlights Badges -->
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 border-t border-slate-100">
+                <div class="p-3 rounded-xl bg-slate-50/80 border border-slate-200/60">
+                  <div class="text-xs text-slate-500">Primary Core</div>
+                  <div class="text-sm font-bold text-slate-900">Java & DSA</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-50/80 border border-slate-200/60">
+                  <div class="text-xs text-slate-500">Web Stack</div>
+                  <div class="text-sm font-bold text-slate-900">MERN Stack</div>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-50/80 border border-slate-200/60 col-span-2 sm:col-span-1">
+                  <div class="text-xs text-slate-500">Mindset</div>
+                  <div class="text-sm font-bold text-slate-900">O(1) & O(N log N)</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- DSA & PROBLEM SOLVING SHOWCASE SECTION ("JAVA MEIN DSA HU") -->
+    <section id="dsa-stats" class="py-20 px-4 sm:px-6 bg-gradient-to-b from-transparent via-slate-50/60 to-transparent">
+      <div class="max-w-5xl mx-auto">
+        
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-amber-50 border border-amber-200/60 text-amber-800 text-xs font-semibold uppercase tracking-wider mb-3">
+            <i data-lucide="award" class="w-3.5 h-3.5 text-amber-600"></i>
+            Algorithmic Prowess
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            "Java Mein DSA Hu" in Numbers
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base mt-2">
+            Consistent problem solving, breaking down complex mathematical and algorithmic bottlenecks.
+          </p>
+        </div>
+
+        <!-- 4 Stat Metric Cards -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
+          
+          <div class="glass-card rounded-2xl p-5 border border-slate-200/90 bg-white/90 text-center">
+            <div class="w-10 h-10 mx-auto mb-3 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+              <i data-lucide="check-check" class="w-5 h-5"></i>
+            </div>
+            <div class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-mono counter-val" data-target="500" data-suffix="+">
+              0
+            </div>
+            <div class="text-xs sm:text-sm font-medium text-slate-500 mt-1">Problems Solved</div>
+            <div class="text-[11px] text-amber-600 font-mono mt-0.5">LeetCode & GFG</div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 border border-slate-200/90 bg-white/90 text-center">
+            <div class="w-10 h-10 mx-auto mb-3 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+              <i data-lucide="flame" class="w-5 h-5"></i>
+            </div>
+            <div class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-mono counter-val" data-target="100" data-suffix="+">
+              0
+            </div>
+            <div class="text-xs sm:text-sm font-medium text-slate-500 mt-1">Day Streak</div>
+            <div class="text-[11px] text-emerald-600 font-mono mt-0.5">Continuous Grind</div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 border border-slate-200/90 bg-white/90 text-center">
+            <div class="w-10 h-10 mx-auto mb-3 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+              <i data-lucide="cpu" class="w-5 h-5"></i>
+            </div>
+            <div class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-mono counter-val" data-target="35" data-suffix="+">
+              0
+            </div>
+            <div class="text-xs sm:text-sm font-medium text-slate-500 mt-1">Core Topics</div>
+            <div class="text-[11px] text-indigo-600 font-mono mt-0.5">Trees, Graphs, DP</div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-5 border border-slate-200/90 bg-white/90 text-center">
+            <div class="w-10 h-10 mx-auto mb-3 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center">
+              <i data-lucide="layers" class="w-5 h-5"></i>
+            </div>
+            <div class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-mono counter-val" data-target="100" data-suffix="%">
+              0
+            </div>
+            <div class="text-xs sm:text-sm font-medium text-slate-500 mt-1">Java Core Mastery</div>
+            <div class="text-[11px] text-sky-600 font-mono mt-0.5">OOP & Collections</div>
+          </div>
+
+        </div>
+
+        <!-- Problem Difficulty Breakdown & Interactive Complexity Playground -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          
+          <!-- Difficulty Spectrum Card -->
+          <div class="lg:col-span-6 glass-card rounded-3xl p-6 sm:p-8 bg-white/85 border border-slate-200/80">
+            <h3 class="text-lg font-bold text-slate-900 mb-1 flex items-center gap-2">
+              <i data-lucide="bar-chart-2" class="w-4 h-4 text-indigo-600"></i>
+              Problem Difficulty Distribution
+            </h3>
+            <p class="text-xs text-slate-500 mb-6">Balanced practice across fundamentals, intermediate, and advanced logic.</p>
+
+            <div class="space-y-4">
+              <!-- Easy -->
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span class="text-emerald-700">Easy (Fundamentals & Implementation)</span>
+                  <span class="font-mono text-slate-700">180+ Solved</span>
+                </div>
+                <div class="w-full h-2.5 rounded-full bg-slate-100 overflow-hidden">
+                  <div class="h-full bg-emerald-500 rounded-full" style="width: 88%"></div>
+                </div>
+              </div>
+
+              <!-- Medium -->
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span class="text-amber-700">Medium (Core DSA & Contest Standard)</span>
+                  <span class="font-mono text-slate-700">270+ Solved</span>
+                </div>
+                <div class="w-full h-2.5 rounded-full bg-slate-100 overflow-hidden">
+                  <div class="h-full bg-amber-500 rounded-full" style="width: 75%"></div>
+                </div>
+              </div>
+
+              <!-- Hard -->
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span class="text-rose-700">Hard (Advanced DP, Graphs & Segment Trees)</span>
+                  <span class="font-mono text-slate-700">50+ Solved</span>
+                </div>
+                <div class="w-full h-2.5 rounded-full bg-slate-100 overflow-hidden">
+                  <div class="h-full bg-rose-500 rounded-full" style="width: 45%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Topic Pills -->
+            <div class="mt-7 pt-5 border-t border-slate-100">
+              <span class="text-xs font-bold text-slate-800 uppercase tracking-wider block mb-3">Key DSA Patterns Mastered:</span>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-100/90 text-slate-700 font-mono">Arrays & Two Pointers</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-100/90 text-slate-700 font-mono">Sliding Window</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-100/90 text-slate-700 font-mono">Binary Search</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-100/90 text-slate-700 font-mono">Binary Trees & BST</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-100/90 text-slate-700 font-mono">Graphs (BFS/DFS)</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-100/90 text-slate-700 font-mono">Dynamic Programming</span>
+                <span class="px-2.5 py-1 rounded-lg bg-slate-100/90 text-slate-700 font-mono">Heap & PriorityQueue</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Complexity Analyzer Widget -->
+          <div class="lg:col-span-6 glass-card rounded-3xl p-6 sm:p-8 bg-white/85 border border-slate-200/80 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                  <i data-lucide="terminal" class="w-4 h-4 text-amber-600"></i>
+                  Interactive Complexity Matrix
+                </h3>
+                <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200/60">Live Query</span>
+              </div>
+              <p class="text-xs text-slate-500 mb-5">Select a pattern below to inspect optimal runtime and memory tradeoffs.</p>
+
+              <!-- Topic Selector -->
+              <div class="mb-5">
+                <label for="dsaTopicSelector" class="block text-xs font-medium text-slate-600 mb-1.5">Choose Algorithm Pattern:</label>
+                <select id="dsaTopicSelector" class="w-full text-xs sm:text-sm font-medium rounded-xl border border-slate-200 px-3.5 py-2.5 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-400">
+                  <option value="binary-search">Binary Search (Sorted Arrays / Answer Space)</option>
+                  <option value="quicksort">QuickSort / Partition Algorithm</option>
+                  <option value="dijkstra">Dijkstra's Shortest Path (PriorityQueue)</option>
+                  <option value="dp-knapsack">0/1 Knapsack (Dynamic Programming)</option>
+                  <option value="lru-cache">LRU Cache (HashMap + Doubly LinkedList)</option>
+                </select>
+              </div>
+
+              <!-- Complexity Output Box -->
+              <div id="dsaComplexityDisplay" class="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+                <div class="grid grid-cols-2 gap-3 mb-2">
+                  <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-100/80">
+                    <span class="text-xs text-emerald-700 font-semibold uppercase tracking-wider block">Time Complexity</span>
+                    <span class="text-sm font-mono font-bold text-emerald-900">O(log N)</span>
+                  </div>
+                  <div class="p-2.5 rounded-lg bg-indigo-50 border border-indigo-100/80">
+                    <span class="text-xs text-indigo-700 font-semibold uppercase tracking-wider block">Space Complexity</span>
+                    <span class="text-sm font-mono font-bold text-indigo-900">O(1)</span>
+                  </div>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">Halves search space each step. Essential for sorted arrays and search-on-answer problems.</p>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span class="flex items-center gap-1.5">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-500"></i> Optimized for Java JRE
+              </span>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 font-medium inline-flex items-center gap-1">
+                View DSA Repo <i data-lucide="external-link" class="w-3 h-3"></i>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- TECH STACK & SKILLS SECTION -->
+    <section id="skills" class="py-20 px-4 sm:px-6">
+      <div class="max-w-5xl mx-auto">
+        
+        <div class="text-center max-w-2xl mx-auto mb-14">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-indigo-50 border border-indigo-200/60 text-indigo-800 text-xs font-semibold uppercase tracking-wider mb-3">
+            <i data-lucide="layers" class="w-3.5 h-3.5 text-indigo-600"></i>
+            Technical Arsenal
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            Full-Stack & Algorithmic Stack
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base mt-2">
+            The programming languages, frameworks, databases, and engineering tools I build with every day.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Category 1: Core & Algorithms -->
+          <div class="glass-card rounded-2xl p-6 border border-slate-200/80 bg-white/80">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-sm">
+                ☕
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900 text-base">Core & Algorithms</h3>
+                <span class="text-xs text-slate-500">Problem Solving & Foundations</span>
+              </div>
+            </div>
+            <ul class="space-y-2.5 text-sm text-slate-700">
+              <li class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                <span class="font-medium">Java (Core & Advanced)</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-amber-100/70 text-amber-800">Primary</span>
+              </li>
+              <li class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                <span class="font-medium">Data Structures & Algo</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-100/70 text-emerald-800">Expertise</span>
+              </li>
+              <li class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                <span class="font-medium">OOPs & Design Patterns</span>
+                <span class="text-xs font-mono text-slate-500">Solid</span>
+              </li>
+              <li class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                <span class="font-medium">Java Collections Framework</span>
+                <span class="text-xs font-mono text-slate-500">Advanced</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Category 2: Frontend Engineering -->
+          <div class="glass-card rounded-2xl p-6 border border-slate-200/80 bg-white/80">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-cyan-50 text-cyan-700 flex items-center justify-center font-bold text-sm">
+                ⚛️
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900 text-base">Frontend Architecture</h3>
+                <span class="text-xs text-slate-500">Clean, Responsive UI/UX</span>
+              </div>
+            </div>
+            <ul class="space-y-2.5 text-sm text-slate-700">
+              <li class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                <span class="font-medium">React.js & Hooks</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-cyan-100/70 text-cyan-800">MERN</span>
+              </li>
+              <li class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                <span class="font-medium">Tailwind CSS</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-sky-100/70 text-sky-800">Modern UI</span>
+              </li>
+              <li class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                <span class="font-medium">JavaScript (ES6+)</span>
+                <span class="text-xs font-mono text-slate-500">Proficient</span>
+              </li>
+              <li class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                <span class="font-medium">HTML5 & Modern CSS3</span>
+                <span class="text-xs font-mono text-slate-500">Semantic</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Category 3: Backend & Database -->
+          <div class="glass-card rounded-2xl p-6 border border-slate-200/80 bg-white/80 md:col-span-2 lg:col-span-1">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-sm">
+                🍃
+              </div>
+              <div>
+                <h3 class="font-bold text-slate-900 text-base">Backend & Data</h3>
+                <span class="text-xs text-slate-500">Scalable APIs & Persistence</span>
+              </div>
+            </div>
+            <ul class="space-y-2.5 text-sm text-slate-700">
+              <li class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                <span class="font-medium">Node.js & Express</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-100/70 text-emerald-800">MERN</span>
+              </li>
+              <li class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                <span class="font-medium">MongoDB & Mongoose</span>
+                <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-100/70 text-emerald-800">NoSQL</span>
+              </li>
+              <li class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                <span class="font-medium">RESTful API Architecture</span>
+                <span class="text-xs font-mono text-slate-500">JWT & Auth</span>
+              </li>
+              <li class="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 transition-colors">
+                <span class="font-medium">Git, Postman & Deployment</span>
+                <span class="text-xs font-mono text-slate-500">DevOps</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <section id="projects" class="py-20 px-4 sm:px-6">
+      <div class="max-w-5xl mx-auto">
+        
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-100 text-slate-800 text-xs font-semibold uppercase tracking-wider mb-2">
+              <i data-lucide="folder-git-2" class="w-3.5 h-3.5"></i>
+              Portfolio & Builds
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Featured Projects
+            </h2>
+            <p class="text-slate-600 text-sm mt-1">Real-world full-stack MERN products & Java algorithmic engines.</p>
+          </div>
+
+          <!-- Project Filter Tabs -->
+          <div class="inline-flex items-center p-1 rounded-xl glass-card border border-slate-200/90 text-xs font-medium">
+            <button data-filter="all" class="filter-btn px-3 py-1.5 rounded-lg bg-slate-900 text-white shadow-sm transition-all">All</button>
+            <button data-filter="mern" class="filter-btn px-3 py-1.5 rounded-lg bg-white/80 text-slate-600 hover:text-slate-900 transition-all">MERN Stack</button>
+            <button data-filter="java" class="filter-btn px-3 py-1.5 rounded-lg bg-white/80 text-slate-600 hover:text-slate-900 transition-all">Java & DSA</button>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <!-- Project 1: MERN Developer Platform -->
+          <div class="project-card glass-card rounded-3xl p-6 sm:p-7 border border-slate-200/80 bg-white/85 flex flex-col justify-between" data-category="mern fullstack">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-md bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-mono font-semibold">MERN Stack</span>
+                <div class="flex items-center gap-2 text-slate-400">
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 transition-colors p-1" title="View Source">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                  </a>
+                  <a href="#" class="hover:text-slate-900 transition-colors p-1" title="Live Preview">
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">DevCollab - Developer Hub</h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-5">
+                Full-featured developer community platform built with React, Node.js, Express, and MongoDB. Includes JWT authentication, code snippet sharing with syntax highlighting, comment threads, and user profile management.
+              </p>
+              <div class="flex flex-wrap gap-1.5 mb-6 text-[11px] font-mono text-slate-600">
+                <span class="px-2 py-0.5 rounded bg-slate-100">React.js</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100">Tailwind CSS</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100">Node.js</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100">Express</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100">MongoDB</span>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+              <span class="text-emerald-600 font-medium flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Live Demo Ready
+              </span>
+              <a href="#" class="font-semibold text-slate-900 hover:text-indigo-600 inline-flex items-center gap-1">
+                Details <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 2: Java DSA Visualizer & Engine -->
+          <div class="project-card glass-card rounded-3xl p-6 sm:p-7 border border-slate-200/80 bg-white/85 flex flex-col justify-between" data-category="java dsa">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-md bg-amber-50 border border-amber-100 text-amber-800 text-xs font-mono font-semibold">Java & DSA</span>
+                <div class="flex items-center gap-2 text-slate-400">
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 transition-colors p-1" title="View Source">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                  </a>
+                  <a href="#" class="hover:text-slate-900 transition-colors p-1" title="Live Preview">
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">AlgoTrack & Visualizer</h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-5">
+                Interactive algorithm visualizer and personalized DSA problem progress tracker. Features step-by-step pathfinding (Dijkstra, BFS/DFS) and sorting animations with custom Java algorithmic benchmarking backend.
+              </p>
+              <div class="flex flex-wrap gap-1.5 mb-6 text-[11px] font-mono text-slate-600">
+                <span class="px-2 py-0.5 rounded bg-slate-100">Java</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100">Graph Theory</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100">React.js</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100">Tailwind CSS</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100">Algorithms</span>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+              <span class="text-amber-600 font-medium flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Algorithmic Engine
+              </span>
+              <a href="#" class="font-semibold text-slate-900 hover:text-amber-600 inline-flex items-center gap-1">
+                Details <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 3: MERN E-Commerce Store with Admin -->
+          <div class="project-card glass-card rounded-3xl p-6 sm:p-7 border border-slate-200/80 bg-white/85 flex flex-col justify-between" data-category="mern fullstack">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-md bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-mono font-semibold">MERN Stack</span>
+                <div class="flex items-center gap-2 text-slate-400">
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 transition-colors p-1" title="View Source">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                  </a>
+                  <a href="#" class="hover:text-slate-900 transition-colors p-1" title="Live Preview">
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">UrbanMart - E-Commerce Platform</h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-5">
+                Full-featured online store with product filtering, cart persistence, checkout flow, user authentication, and a complete admin dashboard for product and order management.
+              </p>
+              <div class="flex flex-wrap gap-1.5 mb-6 text-[11px] font-mono text-slate-600">
+                <span class="px-2 py-0.5 rounded bg-slate-100">React</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100">Express.js</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100">MongoDB Atlas</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100">Tailwind CSS</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100">REST API</span>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+              <span class="text-emerald-600 font-medium flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Full Stack Architecture
+              </span>
+              <a href="#" class="font-semibold text-slate-900 hover:text-indigo-600 inline-flex items-center gap-1">
+                Details <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project 4: Java Multithreaded Banking System -->
+          <div class="project-card glass-card rounded-3xl p-6 sm:p-7 border border-slate-200/80 bg-white/85 flex flex-col justify-between" data-category="java">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-md bg-amber-50 border border-amber-100 text-amber-800 text-xs font-mono font-semibold">Java OOP & Concurrency</span>
+                <div class="flex items-center gap-2 text-slate-400">
+                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-slate-900 transition-colors p-1" title="View Source">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                  </a>
+                  <a href="#" class="hover:text-slate-900 transition-colors p-1" title="Live Preview">
+                    <i data-lucide="external-link" class="w-4 h-4"></i>
+                  </a>
+                </div>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">ConcurBank - Transaction Engine</h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-5">
+                Thread-safe banking and ledger system implemented in Java utilizing synchronization locks, thread pools, and producer-consumer queue models to simulate atomic high-frequency transactions.
+              </p>
+              <div class="flex flex-wrap gap-1.5 mb-6 text-[11px] font-mono text-slate-600">
+                <span class="px-2 py-0.5 rounded bg-slate-100">Java Multithreading</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100">OOP</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100">Synchronization</span>
+                <span class="px-2 py-0.5 rounded bg-slate-100">Collections</span>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+              <span class="text-indigo-600 font-medium flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> Core System Design
+              </span>
+              <a href="#" class="font-semibold text-slate-900 hover:text-amber-600 inline-flex items-center gap-1">
+                Details <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ENGINEERING JOURNEY / TIMELINE -->
+    <section class="py-20 px-4 sm:px-6 bg-slate-50/50">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center max-w-xl mx-auto mb-14">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-200/70 text-slate-800 text-xs font-semibold uppercase tracking-wider mb-2">
+            <i data-lucide="milestone" class="w-3.5 h-3.5"></i>
+            Milestones
+          </div>
+          <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">The Growth Journey</h2>
+          <p class="text-slate-600 text-sm mt-1">From writing my first Java loop to solving 500+ algorithmic puzzles and shipping full-stack products.</p>
+        </div>
+
+        <div class="relative border-l-2 border-slate-200 ml-4 sm:ml-8 pl-6 sm:pl-8 space-y-10">
+          
+          <div class="relative group">
+            <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-indigo-600 shadow-xs"></div>
+            <span class="text-xs font-mono font-bold text-indigo-600 tracking-wide uppercase">Present</span>
+            <h3 class="text-lg font-bold text-slate-900 mt-0.5">Cracking Advanced DSA & Full-Stack Systems</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+              Deep dive into Dynamic Programming, Graph algorithms, and scalable microservices architectures using Java and the MERN stack.
+            </p>
+          </div>
+
+          <div class="relative group">
+            <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-amber-500 shadow-xs"></div>
+            <span class="text-xs font-mono font-bold text-amber-600 tracking-wide uppercase">Milestone</span>
+            <h3 class="text-lg font-bold text-slate-900 mt-0.5">500+ LeetCode & GFG Milestone in Java</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+              Achieved 500+ DSA problems solved in Java, mastering time-space complexity optimization and competitive programming techniques.
+            </p>
+          </div>
+
+          <div class="relative group">
+            <div class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-emerald-500 shadow-xs"></div>
+            <span class="text-xs font-mono font-bold text-emerald-600 tracking-wide uppercase">Full-Stack Mastery</span>
+            <h3 class="text-lg font-bold text-slate-900 mt-0.5">End-to-End MERN Stack Engineering</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-1">
+              Built production-ready web apps with React.js, Tailwind CSS, Node.js, Express, and MongoDB, integrating authentication and RESTful APIs.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-24 px-4 sm:px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-200/80 bg-white/90 shadow-lg">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            
+            <div class="lg:col-span-5 flex flex-col justify-between">
+              <div>
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-emerald-50 text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-3">
+                  <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
+                  Get in Touch
+                </div>
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight mb-3">Let's build something remarkable.</h2>
+                <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                  Whether you have an SDE role, a full-stack opportunity, or want to discuss optimal solutions to a graph problem, my inbox is open!
+                </p>
+
+                <div class="space-y-3 text-sm">
+                  <div class="flex items-center gap-3 text-slate-700">
+                    <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-700">
+                      <i data-lucide="mail" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                      <span class="text-xs text-slate-400 block font-mono">Email</span>
+                      <span class="font-medium cursor-pointer hover:text-indigo-600" onclick="copyText('janmejaytiwari@gmail.com', 'Email')">janmejaytiwari@gmail.com</span>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-3 text-slate-700">
+                    <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-700">
+                      <i data-lucide="map-pin" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                      <span class="text-xs text-slate-400 block font-mono">Location</span>
+                      <span class="font-medium">India • Open to Remote & Relocation</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Social Links -->
+              <div class="pt-8 mt-6 border-t border-slate-100 flex items-center gap-3">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 hover:text-slate-900 transition-colors text-slate-600" title="GitHub">
+                  <i data-lucide="github" class="w-4 h-4"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 hover:text-slate-900 transition-colors text-slate-600" title="LinkedIn">
+                  <i data-lucide="linkedin" class="w-4 h-4"></i>
+                </a>
+                <a href="https://leetcode.com" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 hover:text-slate-900 transition-colors text-slate-600" title="LeetCode">
+                  <i data-lucide="code" class="w-4 h-4"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 hover:text-slate-900 transition-colors text-slate-600" title="Twitter / X">
+                  <i data-lucide="twitter" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="lg:col-span-7">
+              <form id="contactForm" class="space-y-4">
+                <div>
+                  <label for="formName" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Your Name</label>
+                  <input type="text" id="formName" required placeholder="John Doe" class="w-full text-sm rounded-xl border border-slate-200 px-4 py-3 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900 transition-all" />
+                </div>
+                <div>
+                  <label for="formEmail" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Your Email</label>
+                  <input type="email" id="formEmail" required placeholder="john@example.com" class="w-full text-sm rounded-xl border border-slate-200 px-4 py-3 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900 transition-all" />
+                </div>
+                <div>
+                  <label for="formMessage" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Message / Project Details</label>
+                  <textarea id="formMessage" rows="4" required placeholder="Hey Janmejay, I saw your portfolio and would love to chat about..." class="w-full text-sm rounded-xl border border-slate-200 px-4 py-3 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-900 transition-all"></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-full py-3.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 shadow-sm">
+                  <span>Send Message</span>
+                  <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-8 px-4 border-t border-slate-200/80 bg-white/60 text-center text-xs text-slate-500 font-mono">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div>
+        Designed with subtle white ambiance • Java DSA & MERN
+      </div>
+      <div>
+        © 2026 Janmejay Tiwari. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script JS -->
+  <script src="script.js"></script>
+</body>
+</html>
