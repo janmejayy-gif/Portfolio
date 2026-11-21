@@ -43,6 +43,7 @@ body {
     radial-gradient(circle 900px at 85% 20%, rgba(240, 243, 255, 0.8), transparent 75%),
     radial-gradient(circle 700px at 50% 85%, rgba(233, 240, 255, 0.5), transparent 70%),
     #fafafc;
+  transition: background 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
 }
 
 .ambient-grid {
@@ -56,6 +57,7 @@ body {
     linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
   mask-image: radial-gradient(ellipse 90% 70% at 50% 20%, #000 60%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 20%, #000 60%, transparent 100%);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Frosted Glassmorphism Card Style */
@@ -375,4 +377,297 @@ html, body {
 .timeline-card.active + .connector-stem,
 .timeline-card.active ~ .connector-stem {
   background: linear-gradient(to bottom, #4f46e5, #10b981);
+}
+
+/* ==========================================================================
+   Dark Mode & Glowing Matrix Grid System (Easter Egg Gesture & Theme)
+   ========================================================================== */
+html.dark {
+  --bg-primary: #060913;
+  --bg-card: rgba(15, 23, 42, 0.85);
+  --border-subtle: rgba(51, 65, 85, 0.75);
+  --border-hover: rgba(99, 102, 241, 0.6);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #060913;
+  color: #e2e8f0;
+}
+
+/* Deep Space Ambient Mesh in Dark Mode */
+html.dark .ambient-bg {
+  background: 
+    radial-gradient(circle 900px at 15% 10%, rgba(79, 70, 229, 0.28), transparent 70%),
+    radial-gradient(circle 900px at 85% 25%, rgba(6, 182, 212, 0.22), transparent 75%),
+    radial-gradient(circle 800px at 50% 85%, rgba(139, 92, 246, 0.24), transparent 70%),
+    #060913;
+}
+
+/* Glowing Matrix Grid Lines in Dark Mode */
+html.dark .ambient-grid {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(99, 102, 241, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.35) 1px, transparent 1px);
+  filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.85)) drop-shadow(0 0 12px rgba(56, 189, 248, 0.6));
+  animation: neonGridPulse 4s ease-in-out infinite alternate;
+  opacity: 0.95;
+  mask-image: radial-gradient(ellipse 95% 85% at 50% 40%, #000 75%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 95% 85% at 50% 40%, #000 75%, transparent 100%);
+}
+
+@keyframes neonGridPulse {
+  0% {
+    filter: drop-shadow(0 0 3px rgba(99, 102, 241, 0.55)) drop-shadow(0 0 8px rgba(6, 182, 212, 0.4));
+    opacity: 0.85;
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba(129, 140, 248, 0.95)) drop-shadow(0 0 18px rgba(56, 189, 248, 0.75));
+    opacity: 1;
+  }
+  100% {
+    filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.7)) drop-shadow(0 0 12px rgba(139, 92, 246, 0.5));
+    opacity: 0.9;
+  }
+}
+
+/* Glassmorphism Cards & Surfaces in Dark Mode */
+html.dark .glass-card {
+  background: rgba(15, 23, 42, 0.82) !important;
+  border-color: rgba(51, 65, 85, 0.75) !important;
+  box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(99, 102, 241, 0.2) !important;
+}
+
+html.dark .glass-card:hover {
+  border-color: rgba(99, 102, 241, 0.7) !important;
+  box-shadow: 0 16px 36px -4px rgba(0, 0, 0, 0.7), 0 0 24px rgba(99, 102, 241, 0.28) !important;
+}
+
+html.dark .glass-pill {
+  background: rgba(30, 41, 59, 0.85) !important;
+  border-color: rgba(71, 85, 105, 0.75) !important;
+  color: #e2e8f0 !important;
+}
+
+/* Background overrides in Dark Mode */
+html.dark .bg-white,
+html.dark .bg-white\/70,
+html.dark .bg-white\/80,
+html.dark .bg-white\/85,
+html.dark .bg-white\/90,
+html.dark .bg-white\/95 {
+  background-color: rgba(15, 23, 42, 0.85) !important;
+}
+
+html.dark .bg-slate-50,
+html.dark .bg-slate-50\/50,
+html.dark .bg-slate-50\/90,
+html.dark .bg-slate-100 {
+  background-color: rgba(30, 41, 59, 0.75) !important;
+}
+
+html.dark .bg-slate-200,
+html.dark .bg-slate-200\/70 {
+  background-color: rgba(51, 65, 85, 0.75) !important;
+}
+
+/* Text overrides in Dark Mode */
+html.dark .text-slate-900,
+html.dark .text-slate-800 {
+  color: #f8fafc !important;
+}
+
+html.dark .text-slate-700,
+html.dark .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+
+html.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+html.dark .text-slate-400 {
+  color: #64748b !important;
+}
+
+/* Border overrides in Dark Mode */
+html.dark .border-slate-100,
+html.dark .border-slate-200,
+html.dark .border-slate-200\/70,
+html.dark .border-slate-200\/80,
+html.dark .border-slate-200\/90 {
+  border-color: rgba(51, 65, 85, 0.75) !important;
+}
+
+/* Form inputs in Dark Mode */
+html.dark input,
+html.dark textarea {
+  background-color: rgba(15, 23, 42, 0.95) !important;
+  color: #f8fafc !important;
+  border-color: rgba(71, 85, 105, 0.8) !important;
+}
+
+html.dark input:focus,
+html.dark textarea:focus {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.4) !important;
+}
+
+/* Buttons in Dark Mode */
+html.dark .btn-primary {
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 18px rgba(79, 70, 229, 0.45) !important;
+}
+
+html.dark .btn-primary:hover {
+  background: linear-gradient(135deg, #4338ca 0%, #4f46e5 100%) !important;
+  box-shadow: 0 6px 24px rgba(79, 70, 229, 0.65) !important;
+}
+
+html.dark .btn-secondary {
+  background: rgba(30, 41, 59, 0.85) !important;
+  color: #f8fafc !important;
+  border-color: rgba(71, 85, 105, 0.8) !important;
+}
+
+html.dark .btn-secondary:hover {
+  background: rgba(51, 65, 85, 0.95) !important;
+  border-color: rgba(99, 102, 241, 0.6) !important;
+}
+
+/* Navigation in Dark Mode */
+html.dark .nav-item {
+  color: #94a3b8 !important;
+}
+
+html.dark .nav-item:hover {
+  color: #f8fafc !important;
+}
+
+html.dark .nav-item.active {
+  color: #f8fafc !important;
+  background: rgba(51, 65, 85, 0.65) !important;
+}
+
+html.dark .nav-item.active::after {
+  background: #6366f1;
+}
+
+/* Category filter buttons in Dark Mode */
+html.dark .filter-btn[aria-pressed="false"] {
+  background-color: rgba(30, 41, 59, 0.7) !important;
+  color: #94a3b8 !important;
+  border-color: rgba(51, 65, 85, 0.7) !important;
+}
+
+html.dark .filter-btn[aria-pressed="true"] {
+  background-color: #4f46e5 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 16px rgba(79, 70, 229, 0.4) !important;
+}
+
+/* Education Timeline in Dark Mode */
+html.dark .timeline-node {
+  background: #0f172a !important;
+  border-color: rgba(99, 102, 241, 0.45) !important;
+}
+
+html.dark .timeline-node .node-icon {
+  color: #cbd5e1 !important;
+}
+
+html.dark .timeline-node.active {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 24px rgba(99, 102, 241, 0.55), 0 0 12px rgba(6, 182, 212, 0.45) !important;
+}
+
+html.dark .timeline-node.active .node-icon {
+  color: #818cf8 !important;
+}
+
+html.dark .timeline-card {
+  background: rgba(15, 23, 42, 0.88) !important;
+  border-color: rgba(51, 65, 85, 0.8) !important;
+}
+
+html.dark .timeline-card.active {
+  background: rgba(22, 33, 62, 0.95) !important;
+  border-color: #6366f1 !important;
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.75), 0 0 20px rgba(99, 102, 241, 0.28) !important;
+}
+
+html.dark #wavePathBg {
+  stroke: rgba(71, 85, 105, 0.45) !important;
+}
+
+/* Badges in Dark Mode */
+html.dark .bg-indigo-50 {
+  background-color: rgba(79, 70, 229, 0.18) !important;
+  color: #a5b4fc !important;
+  border-color: rgba(99, 102, 241, 0.3) !important;
+}
+
+html.dark .bg-emerald-50 {
+  background-color: rgba(16, 185, 129, 0.18) !important;
+  color: #6ee7b7 !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+html.dark .bg-sky-50, html.dark .bg-cyan-50 {
+  background-color: rgba(14, 165, 233, 0.18) !important;
+  color: #7dd3fc !important;
+  border-color: rgba(14, 165, 233, 0.3) !important;
+}
+
+html.dark .bg-purple-50 {
+  background-color: rgba(168, 85, 247, 0.18) !important;
+  color: #d8b4fe !important;
+  border-color: rgba(168, 85, 247, 0.3) !important;
+}
+
+html.dark .bg-amber-50 {
+  background-color: rgba(245, 158, 11, 0.18) !important;
+  color: #fcd34d !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+}
+
+/* Footer in Dark Mode */
+html.dark footer {
+  background: rgba(11, 17, 32, 0.85) !important;
+  border-color: rgba(51, 65, 85, 0.7) !important;
+}
+
+/* Scrollbar in Dark Mode */
+html.dark::-webkit-scrollbar-track {
+  background: #060913;
+}
+
+html.dark::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+html.dark::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Global Transitions for Seamless Theme Flip */
+body, 
+.ambient-bg, 
+.ambient-grid, 
+.glass-card, 
+.btn-primary, 
+.btn-secondary, 
+nav, 
+footer, 
+.timeline-card, 
+.timeline-node {
+  transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.35s ease,
+              box-shadow 0.6s ease;
 }

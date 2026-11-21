@@ -46,8 +46,14 @@ window.Components.renderNavbar = function(containerId, data) {
           ${navLinksHtml}
         </div>
 
-        <!-- Action CTAs -->
-        <div class="hidden md:flex items-center gap-3">
+        <!-- Action CTAs & Theme Toggle -->
+        <div class="hidden md:flex items-center gap-2.5">
+          <button type="button" 
+                  class="theme-toggle-btn p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors border border-slate-200/80 focus-visible:ring-2 focus-visible:ring-slate-900" 
+                  aria-label="Toggle Dark / Light Theme" 
+                  title="Toggle Theme (or scroll to bottom & back up)">
+            <i data-lucide="moon" class="w-4 h-4 theme-toggle-icon"></i>
+          </button>
           <a href="#contact" class="btn-primary text-xs font-semibold px-4 py-2.5 rounded-xl inline-flex items-center gap-1.5 shadow-sm" aria-label="Connect and view resume details">
             <span>Resume</span>
             <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
@@ -71,10 +77,16 @@ window.Components.renderNavbar = function(containerId, data) {
            role="menu" 
            aria-label="Mobile Navigation Menu">
         ${mobileLinksHtml}
-        <div class="pt-3 border-t border-slate-100 mt-2">
-          <a href="#contact" class="btn-primary text-xs text-center py-2.5 rounded-xl block font-semibold">
+        <div class="pt-3 border-t border-slate-100 mt-2 flex items-center gap-2">
+          <a href="#contact" class="btn-primary text-xs text-center py-2.5 rounded-xl block font-semibold flex-1">
             View / Download Resume
           </a>
+          <button type="button" 
+                  class="theme-toggle-btn p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors border border-slate-200/80 focus-visible:ring-2 focus-visible:ring-slate-900 flex items-center justify-center shrink-0" 
+                  aria-label="Toggle Dark / Light Theme"
+                  title="Toggle Theme">
+            <i data-lucide="moon" class="w-4 h-4 theme-toggle-icon"></i>
+          </button>
         </div>
       </div>
     </div>

@@ -286,4 +286,86 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Default active step on load: Step 2 (B.Tech)
   setEducationStep(2);
+
+  // 12. Bottom Scroll-Up Easter Egg: Dark Mode & Glowing Matrix Grid
+  // "jab user page scroll krke pura neeche jaaye aur wapas jab neeche se upar scroll kare toh page dark mode pe jaye and peeche ki grid lines glow kare"
+  let hasReachedBottom = false;
+  let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+  let scrollUpDistance = 0;
+
+  window.setTheme = function(isDark, showToastNotification = true) {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('portfolio_theme', 'dark');
+      document.querySelectorAll('.theme-toggle-icon').forEach(icon => {
+        icon.setAttribute('data-lucide', 'sun');
+      });
+      if (showToastNotification) {
+        window.showToast('🌙 Dark Mode Activated • Glowing Matrix Grid Online', true, 4000);
+      }
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('portfolio_theme', 'light');
+      document.querySelectorAll('.theme-toggle-icon').forEach(icon => {
+        icon.setAttribute('data-lucide', 'moon');
+      });
+      if (showToastNotification) {
+        window.showToast('☀️ Light Mode Restored', true, 3000);
+      }
+    }
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  };
+
+  // Restore saved theme on load (if previously toggled)
+  const savedTheme = localStorage.getItem('portfolio_theme');
+  if (savedTheme === 'dark') {
+    window.setTheme(true, false);
+  }
+
+  // Handle manual clicks on theme toggle button (Navbar desktop & mobile)
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.theme-toggle-btn');
+    if (btn) {
+      const isDark = document.documentElement.classList.contains('dark');
+      window.setTheme(!isDark, true);
+    }
+  });
+
+  // Scroll listener for bottom-to-up gesture
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+
+    // Check if user has reached bottom (within 80px)
+    const isAtBottom = (currentScrollY + windowHeight) >= (docHeight - 80);
+
+    if (isAtBottom) {
+      hasReachedBottom = true;
+      scrollUpDistance = 0;
+    }
+
+    // If user has reached the bottom and is now scrolling back UP
+    if (hasReachedBottom && currentScrollY < lastScrollY) {
+      scrollUpDistance += (lastScrollY - currentScrollY);
+
+      // Once scrolled up noticeably (~35px) from the bottom
+      if (scrollUpDistance >= 35) {
+        const isCurrentlyDark = document.documentElement.classList.contains('dark');
+        if (!isCurrentlyDark) {
+          window.setTheme(true, true);
+        } else {
+          window.setTheme(false, true);
+        }
+        hasReachedBottom = false;
+        scrollUpDistance = 0;
+      }
+    } else if (!isAtBottom && currentScrollY > lastScrollY && scrollUpDistance > 0) {
+      scrollUpDistance = 0;
+    }
+
+    lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
+  }, { passive: true });
 });
