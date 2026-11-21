@@ -1,14 +1,16 @@
 /**
  * InteractiveAvatar.js
  * 
- * Reusable, high-performance React component for Janmejay Tiwari's Portfolio.
- * Implements:
- * 1. Idle Animation: Gentle vertical floating & breathing motion.
- * 2. Mouse Tracking: 3D perspective tilt, parallax photo shift & specular light sheen.
- * 3. Scroll-Based Animation: Subtle scroll parallax response.
- * 4. Interactive Hover: Smooth lift and ambient glow ring expansion.
- * 
- * Written in React JavaScript (React 18 compatible, zero-build execution).
+ * Reusable React + GSAP component for Janmejay Tiwari's 3D Avatar.
+ * Features:
+ * - Frameless, full-body character presentation with dynamic ground shadow.
+ * - Smooth idle breathing & floating animation via GSAP sine loop.
+ * - Cursor-driven 3D tilt & parallax translation with GSAP power2 interpolation.
+ * - Natural spring-back reset on mouse leave.
+ * - ScrollTrigger-driven subtle parallax elevation responding to page scroll.
+ * - Pose transition system supporting future transparent PNGs with crossfade.
+ * - Clean GSAP lifecycle teardown via gsap.context() in useEffect.
+ * - prefers-reduced-motion & touch/mobile safety guardrails.
  */
 
 (function () {
@@ -22,256 +24,245 @@
   const { useState, useEffect, useRef, useCallback } = React;
 
   function InteractiveAvatar({
-    imageSrc = 'public/images/avatar.jpg',
-    alt = 'Janmejay Tiwari - Full-Stack Developer & Data Science Enthusiast',
-    badgeText = 'Full-Stack • AI/ML',
-    size = 'default'
+    asset = 'public/images/janmejay-avatar.png',
+    fallbackAsset = 'assets/janmejay-avatar.png',
+    alt = 'Janmejay Tiwari - Full-Stack Developer & AI/ML Enthusiast',
+    poses = null, // Optional map: { default: '...', wave: '...', point: '...' }
+    activePose = 'default'
   }) {
-    const cardRef = useRef(null);
-    const photoRef = useRef(null);
-    const sheenRef = useRef(null);
-    const rafIdRef = useRef(null);
+    const containerRef = useRef(null);
+    const avatarRef = useRef(null);
+    const shadowRef = useRef(null);
+    const ctxRef = useRef(null);
 
-    // Target and current values for smooth linear interpolation (lerp)
-    const motionRef = useRef({
-      targetRotateX: 0,
-      targetRotateY: 0,
-      currentRotateX: 0,
-      currentRotateY: 0,
-      sheenX: 50,
-      sheenY: 50,
-      sheenOpacity: 0,
-      scrollYOffset: 0,
-      isHovered: false
-    });
-
-    const [supportsHover, setSupportsHover] = useState(true);
+    const [currentSrc, setCurrentSrc] = useState(
+      poses && poses[activePose] ? poses[activePose] : asset
+    );
     const [reducedMotion, setReducedMotion] = useState(false);
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
 
-    // Check media queries for touch and reduced motion
+    // Track active pose changes for smooth transition
     useEffect(() => {
-      const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-      const hoverQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+      if (poses && poses[activePose]) {
+        if (typeof gsap !== 'undefined' && avatarRef.current && !reducedMotion) {
+          gsap.to(avatarRef.current, {
+            opacity: 0.2,
+            duration: 0.15,
+            onComplete: () => {
+              setCurrentSrc(poses[activePose]);
+              gsap.to(avatarRef.current, { opacity: 1, duration: 0.25 });
+            }
+          });
+        } else {
+          setCurrentSrc(poses[activePose]);
+        }
+      }
+    }, [activePose, poses, reducedMotion]);
 
-      setReducedMotion(motionQuery.matches);
-      setSupportsHover(hoverQuery.matches);
+    // Check media queries
+    useEffect(() => {
+      const motionQ = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const touchQ = window.matchMedia('(hover: none) or (pointer: coarse)');
 
-      const handleMotionChange = (e) => setReducedMotion(e.matches);
-      const handleHoverChange = (e) => setSupportsHover(e.matches);
+      setReducedMotion(motionQ.matches);
+      setIsTouchDevice(touchQ.matches);
 
-      if (motionQuery.addEventListener) {
-        motionQuery.addEventListener('change', handleMotionChange);
-        hoverQuery.addEventListener('change', handleHoverChange);
+      const handleMotion = (e) => setReducedMotion(e.matches);
+      const handleTouch = (e) => setIsTouchDevice(e.matches);
+
+      if (motionQ.addEventListener) {
+        motionQ.addEventListener('change', handleMotion);
+        touchQ.addEventListener('change', handleTouch);
       }
 
       return () => {
-        if (motionQuery.removeEventListener) {
-          motionQuery.removeEventListener('change', handleMotionChange);
-          hoverQuery.removeEventListener('change', handleHoverChange);
+        if (motionQ.removeEventListener) {
+          motionQ.removeEventListener('change', handleMotion);
+          touchQ.removeEventListener('change', handleTouch);
         }
       };
     }, []);
 
-    // 60FPS RAF Animation Engine for 3D Tilt & Parallax Interpolation
+    // GSAP Animation Engine: Idle float, Ground shadow pulse, ScrollTrigger
     useEffect(() => {
-      if (reducedMotion) return;
+      if (typeof gsap === 'undefined') {
+        console.warn('InteractiveAvatar: GSAP is not loaded. Animations falling back to static presentation.');
+        return;
+      }
 
-      let isRunning = true;
-      const lerp = (start, end, factor) => start + (end - start) * factor;
+      if (typeof ScrollTrigger !== 'undefined' && gsap.registerPlugin) {
+        gsap.registerPlugin(ScrollTrigger);
+      }
 
-      const animateLoop = () => {
-        if (!isRunning) return;
+      // Use gsap.context() for scoped animations and clean unmounting
+      ctxRef.current = gsap.context(() => {
+        if (reducedMotion) return;
 
-        const m = motionRef.current;
-        // Smoothly interpolate current rotation toward target
-        m.currentRotateX = lerp(m.currentRotateX, m.targetRotateX, 0.12);
-        m.currentRotateY = lerp(m.currentRotateY, m.targetRotateY, 0.12);
+        // 1. Idle Floating & Breathing Loop
+        gsap.to(avatarRef.current, {
+          y: -10,
+          duration: 2.8,
+          ease: 'sine.inOut',
+          repeat: -1,
+          yoyo: true
+        });
 
-        if (cardRef.current && photoRef.current) {
-          const card = cardRef.current;
-          const photo = photoRef.current;
-          const sheen = sheenRef.current;
-
-          // Combined 3D transform with scroll parallax
-          const elevation = m.isHovered ? 1.03 : 1.0;
-          const translateY = m.scrollYOffset;
-
-          card.style.transform = `perspective(1000px) rotateX(${m.currentRotateX.toFixed(2)}deg) rotateY(${m.currentRotateY.toFixed(2)}deg) translateY(${translateY.toFixed(1)}px) scale3d(${elevation}, ${elevation}, 1)`;
-
-          // Parallax interior photo shift
-          const photoShiftX = (-m.currentRotateY * 0.45).toFixed(2);
-          const photoShiftY = (m.currentRotateX * 0.45).toFixed(2);
-          photo.style.transform = `scale(1.05) translate3d(${photoShiftX}px, ${photoShiftY}px, 0)`;
-
-          // Specular light sheen gradient
-          if (sheen) {
-            sheen.style.background = `radial-gradient(circle at ${m.sheenX}% ${m.sheenY}%, rgba(255,255,255,${m.sheenOpacity}) 0%, rgba(255,255,255,0) 65%)`;
-          }
+        // Synchronized soft ground shadow breathing
+        if (shadowRef.current) {
+          gsap.to(shadowRef.current, {
+            scaleX: 0.85,
+            scaleY: 0.9,
+            opacity: 0.25,
+            duration: 2.8,
+            ease: 'sine.inOut',
+            repeat: -1,
+            yoyo: true
+          });
         }
 
-        rafIdRef.current = requestAnimationFrame(animateLoop);
-      };
-
-      rafIdRef.current = requestAnimationFrame(animateLoop);
+        // 2. ScrollTrigger Parallax
+        if (typeof ScrollTrigger !== 'undefined' && containerRef.current) {
+          ScrollTrigger.create({
+            trigger: containerRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1.2,
+            onUpdate: (self) => {
+              // Subtle scroll parallax: max 14px displacement across scroll progress
+              const progress = self.progress - 0.5; // -0.5 to 0.5
+              if (avatarRef.current) {
+                gsap.to(avatarRef.current, {
+                  translateY: progress * -18,
+                  overwrite: 'auto',
+                  duration: 0.3
+                });
+              }
+            }
+          });
+        }
+      }, containerRef);
 
       return () => {
-        isRunning = false;
-        if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+        if (ctxRef.current) {
+          ctxRef.current.revert(); // Automatically kills timelines, tweens and ScrollTriggers
+        }
       };
     }, [reducedMotion]);
 
-    // Scroll-based parallax listener
-    useEffect(() => {
-      if (reducedMotion) return;
-
-      let scrollRaf = null;
-      const handleScroll = () => {
-        if (scrollRaf) return;
-        scrollRaf = requestAnimationFrame(() => {
-          scrollRaf = null;
-          if (!cardRef.current) return;
-          const rect = cardRef.current.getBoundingClientRect();
-          const viewportH = window.innerHeight || 800;
-          // Calculate progress through viewport center (-1 to 1)
-          const centerDelta = (rect.top + rect.height / 2 - viewportH / 2) / (viewportH / 2);
-          // Subtle gentle shift (max 8px)
-          motionRef.current.scrollYOffset = Math.max(-10, Math.min(10, centerDelta * -6));
-        });
-      };
-
-      window.addEventListener('scroll', handleScroll, { passive: true });
-      handleScroll();
-
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-        if (scrollRaf) cancelAnimationFrame(scrollRaf);
-      };
-    }, [reducedMotion]);
-
-    // Mouse Tracking Event Handlers
+    // Mouse Tracking: Parallax & 3D Tilt
     const handleMouseMove = useCallback((e) => {
-      if (!supportsHover || reducedMotion || !cardRef.current) return;
+      if (reducedMotion || isTouchDevice || typeof gsap === 'undefined') return;
+      if (!containerRef.current || !avatarRef.current) return;
 
-      const rect = cardRef.current.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+      const rect = containerRef.current.getBoundingClientRect();
+      const clientX = e.clientX - rect.left;
+      const clientY = e.clientY - rect.top;
 
-      const normX = (x / rect.width) * 2 - 1; // -1 to +1
-      const normY = (y / rect.height) * 2 - 1; // -1 to +1
+      // Normalized coordinates (-1 to 1)
+      const normX = (clientX / rect.width) * 2 - 1;
+      const normY = (clientY / rect.height) * 2 - 1;
 
-      // 3D Tilt bounds: max 12 deg Y, max 10 deg X
-      motionRef.current.targetRotateX = -normY * 11;
-      motionRef.current.targetRotateY = normX * 13;
+      // Subtle, natural tilt parameters
+      const tiltY = normX * 12;      // Horizontal rotation (deg)
+      const tiltX = -normY * 8;      // Vertical rotation (deg)
+      const parallaxX = normX * 10;  // Lateral shift (px)
+      const parallaxY = normY * 6;   // Vertical shift (px)
 
-      // Sheen specular highlight position
-      motionRef.current.sheenX = Math.round((x / rect.width) * 100);
-      motionRef.current.sheenY = Math.round((y / rect.height) * 100);
-      motionRef.current.sheenOpacity = 0.35;
-      motionRef.current.isHovered = true;
-    }, [supportsHover, reducedMotion]);
+      gsap.to(avatarRef.current, {
+        rotationY: tiltY,
+        rotationX: tiltX,
+        x: parallaxX,
+        y: parallaxY,
+        transformPerspective: 800,
+        transformOrigin: '50% 90%',
+        duration: 0.45,
+        ease: 'power2.out',
+        overwrite: 'auto'
+      });
 
-    const handleMouseEnter = useCallback(() => {
-      if (!supportsHover || reducedMotion) return;
-      motionRef.current.isHovered = true;
-      motionRef.current.sheenOpacity = 0.35;
-    }, [supportsHover, reducedMotion]);
+      if (shadowRef.current) {
+        gsap.to(shadowRef.current, {
+          x: parallaxX * 0.7,
+          duration: 0.45,
+          ease: 'power2.out',
+          overwrite: 'auto'
+        });
+      }
+    }, [reducedMotion, isTouchDevice]);
 
+    // Smooth Reset on Mouse Leave
     const handleMouseLeave = useCallback(() => {
-      if (!supportsHover || reducedMotion) return;
-      motionRef.current.targetRotateX = 0;
-      motionRef.current.targetRotateY = 0;
-      motionRef.current.sheenOpacity = 0;
-      motionRef.current.isHovered = false;
-    }, [supportsHover, reducedMotion]);
+      if (reducedMotion || isTouchDevice || typeof gsap === 'undefined') return;
+      if (!avatarRef.current) return;
 
-    // Render tree using React.createElement (React 18 standard)
+      gsap.to(avatarRef.current, {
+        rotationY: 0,
+        rotationX: 0,
+        x: 0,
+        y: 0,
+        duration: 0.85,
+        ease: 'power3.out',
+        overwrite: 'auto'
+      });
+
+      if (shadowRef.current) {
+        gsap.to(shadowRef.current, {
+          x: 0,
+          duration: 0.85,
+          ease: 'power3.out',
+          overwrite: 'auto'
+        });
+      }
+    }, [reducedMotion, isTouchDevice]);
+
     return React.createElement(
       'div',
       {
-        className: 'avatar-interactive-wrapper relative flex flex-col items-center select-none py-2',
-      },
-      // Floating Idle Container
-      React.createElement(
-        'div',
-        {
-          className: reducedMotion ? 'avatar-motion-node' : 'avatar-motion-node avatar-idle-float',
-          style: { willChange: 'transform' }
+        ref: containerRef,
+        onMouseMove: handleMouseMove,
+        onMouseLeave: handleMouseLeave,
+        className: 'avatar-character-stage relative w-full flex flex-col items-center justify-end select-none py-2',
+        style: {
+          minHeight: '340px',
+          perspective: '1000px',
         },
-        // 3D Card Shell
-        React.createElement(
-          'div',
-          {
-            ref: cardRef,
-            onMouseMove: handleMouseMove,
-            onMouseEnter: handleMouseEnter,
-            onMouseLeave: handleMouseLeave,
-            className: 'avatar-3d-card relative cursor-pointer transition-shadow duration-300',
-            style: {
-              width: '260px',
-              height: '320px',
-              transformStyle: 'preserve-3d',
-              borderRadius: '28px',
-            },
-            role: 'img',
-            'aria-label': alt,
-            tabIndex: 0
-          },
-          // Ambient Outer Glow Ring
-          React.createElement('div', {
-            className: 'avatar-glow-ring absolute -inset-1.5 rounded-[32px] opacity-75 blur-md transition-opacity duration-300 pointer-events-none'
-          }),
-          // Card Surface with Glass & Gradient Border
-          React.createElement(
-            'div',
-            {
-              className: 'avatar-inner-surface relative w-full h-full rounded-[28px] overflow-hidden border border-slate-200/90 dark:border-slate-700/80 bg-white/95 dark:bg-slate-800/95 shadow-xl transition-colors duration-300',
-              style: { transformStyle: 'preserve-3d' }
-            },
-            // The Original Photograph (crisp, natural proportions, object-cover)
-            React.createElement('img', {
-              ref: photoRef,
-              src: imageSrc,
-              alt: alt,
-              className: 'avatar-photo absolute inset-0 w-full h-full object-cover object-top transition-transform duration-100 ease-out',
-              loading: 'eager',
-              draggable: false,
-              onError: (e) => {
-                // Fallback to assets/avatar.jpg if public/images isn't mapped
-                if (e.target.src.indexOf('assets/avatar.jpg') === -1) {
-                  e.target.src = 'assets/avatar.jpg';
-                }
-              }
-            }),
-            // Bottom vignette gradient for contrast & depth
-            React.createElement('div', {
-              className: 'avatar-vignette absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent pointer-events-none'
-            }),
-            // Specular Lighting Sheen Layer (Follows cursor)
-            React.createElement('div', {
-              ref: sheenRef,
-              className: 'avatar-specular-sheen absolute inset-0 pointer-events-none mix-blend-overlay transition-opacity duration-200',
-              style: { opacity: 0.9 }
-            }),
-            // Top Status / Pill Tag over photo
-            React.createElement(
-              'div',
-              {
-                className: 'absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none'
-              },
-              React.createElement(
-                'span',
-                {
-                  className: 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium font-mono bg-slate-900/60 backdrop-blur-md text-emerald-400 border border-white/10 shadow-sm'
-                },
-                React.createElement('span', {
-                  className: 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse inline-block'
-                }),
-                badgeText
-              )
-            )
-          )
-        )
-      )
+        role: 'img',
+        'aria-label': alt
+      },
+      // Ambient backlight glow (theme-integrated soft halo)
+      React.createElement('div', {
+        className: 'avatar-halo absolute pointer-events-none rounded-full blur-2xl opacity-40 dark:opacity-30',
+        style: {
+          width: '240px',
+          height: '240px',
+          top: '15%',
+          background: 'radial-gradient(circle, rgba(99, 102, 241, 0.45) 0%, rgba(59, 130, 246, 0.2) 50%, transparent 75%)'
+        }
+      }),
+      // The Full-Body Transparent Character
+      React.createElement('img', {
+        ref: avatarRef,
+        src: currentSrc,
+        alt: alt,
+        className: 'avatar-character-img relative z-10 w-auto max-w-[260px] sm:max-w-[280px] h-[310px] sm:h-[350px] object-contain object-bottom pointer-events-auto cursor-pointer transition-opacity duration-300',
+        draggable: false,
+        loading: 'eager',
+        onError: (e) => {
+          if (fallbackAsset && e.target.src.indexOf(fallbackAsset) === -1) {
+            e.target.src = fallbackAsset;
+          }
+        }
+      }),
+      // Ground Shadow Ellipse
+      React.createElement('div', {
+        ref: shadowRef,
+        className: 'avatar-ground-shadow relative z-0 rounded-[100%] pointer-events-none mt-[-8px]',
+        style: {
+          width: '180px',
+          height: '18px',
+          background: 'radial-gradient(ellipse at center, rgba(15, 23, 42, 0.38) 0%, rgba(15, 23, 42, 0.12) 50%, transparent 75%)'
+        }
+      })
     );
   }
 
@@ -280,24 +271,21 @@
     const rootElement = document.getElementById('interactive-avatar-root');
     if (!rootElement) return;
 
+    const props = {
+      asset: 'public/images/janmejay-avatar.png',
+      fallbackAsset: 'assets/janmejay-avatar.png',
+      alt: 'Janmejay Tiwari - Full-Stack Developer & AI/ML Enthusiast',
+      poses: {
+        default: 'public/images/janmejay-avatar.png'
+      },
+      activePose: 'default'
+    };
+
     if (typeof ReactDOM !== 'undefined' && ReactDOM.createRoot) {
       const root = ReactDOM.createRoot(rootElement);
-      root.render(
-        React.createElement(InteractiveAvatar, {
-          imageSrc: 'public/images/avatar.jpg',
-          alt: 'Janmejay Tiwari - Full-Stack Developer & Data Science Enthusiast',
-          badgeText: 'Online • SDE Ready'
-        })
-      );
+      root.render(React.createElement(InteractiveAvatar, props));
     } else if (typeof ReactDOM !== 'undefined' && ReactDOM.render) {
-      ReactDOM.render(
-        React.createElement(InteractiveAvatar, {
-          imageSrc: 'public/images/avatar.jpg',
-          alt: 'Janmejay Tiwari - Full-Stack Developer & Data Science Enthusiast',
-          badgeText: 'Online • SDE Ready'
-        }),
-        rootElement
-      );
+      ReactDOM.render(React.createElement(InteractiveAvatar, props), rootElement);
     }
   }
 
@@ -305,7 +293,7 @@
   window.InteractiveAvatar = InteractiveAvatar;
   window.mountInteractiveAvatar = mountInteractiveAvatar;
 
-  // Auto-mount on DOM ready
+  // Mount on DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', mountInteractiveAvatar);
   } else {

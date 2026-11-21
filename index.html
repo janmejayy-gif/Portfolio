@@ -209,22 +209,16 @@
         <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-200/80 bg-white/85 shadow-sm">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            <!-- Left Profile: Interactive Photo Avatar (React 3D Parallax & Idle Float) -->
+            <!-- Left Profile: Frameless 3D Cartoon Avatar (React + GSAP) -->
             <div class="lg:col-span-5 flex flex-col items-center text-center">
 
               <!-- Interactive Avatar Root (Mounted via js/components/InteractiveAvatar.js) -->
               <div id="interactive-avatar-root" class="w-full flex justify-center items-center py-1">
-                <!-- Fallback progressive enhancement while React mounts -->
-                <div class="avatar-interactive-wrapper relative flex flex-col items-center select-none py-2">
-                  <div class="avatar-motion-node avatar-idle-float">
-                    <div class="avatar-3d-card relative cursor-pointer" style="width: 260px; height: 320px; border-radius: 28px;">
-                      <div class="avatar-glow-ring absolute -inset-1.5 rounded-[32px] opacity-75 blur-md pointer-events-none"></div>
-                      <div class="avatar-inner-surface relative w-full h-full rounded-[28px] overflow-hidden border border-slate-200/90 dark:border-slate-700/80 bg-white/95 dark:bg-slate-800/95 shadow-xl">
-                        <img src="public/images/avatar.jpg" alt="Janmejay Tiwari" class="avatar-photo absolute inset-0 w-full h-full object-cover object-top" loading="eager" onerror="this.src='assets/avatar.jpg'" />
-                        <div class="avatar-vignette absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent pointer-events-none"></div>
-                      </div>
-                    </div>
-                  </div>
+                <!-- Fallback progressive enhancement while React & GSAP mount -->
+                <div class="avatar-character-stage relative w-full flex flex-col items-center justify-end select-none py-2" style="min-height: 340px;">
+                  <div class="avatar-halo absolute pointer-events-none rounded-full blur-2xl opacity-40 dark:opacity-30" style="width: 240px; height: 240px; top: 15%; background: radial-gradient(circle, rgba(99, 102, 241, 0.45) 0%, rgba(59, 130, 246, 0.2) 50%, transparent 75%);"></div>
+                  <img src="public/images/janmejay-avatar.png" alt="Janmejay Tiwari" class="avatar-character-img relative z-10 w-auto max-w-[260px] sm:max-w-[280px] h-[310px] sm:h-[350px] object-contain object-bottom pointer-events-auto cursor-pointer" loading="eager" onerror="this.src='assets/janmejay-avatar.png'" />
+                  <div class="avatar-ground-shadow relative z-0 rounded-[100%] pointer-events-none mt-[-8px]" style="width: 180px; height: 18px; background: radial-gradient(ellipse at center, rgba(15, 23, 42, 0.38) 0%, rgba(15, 23, 42, 0.12) 50%, transparent 75%);"></div>
                 </div>
               </div>
 
@@ -963,6 +957,10 @@
 
   <!-- Reusable Footer Container (Mounted via js/components/footer.js) -->
   <div id="site-footer"></div>
+
+  <!-- GSAP 3 & ScrollTrigger for High-Performance Animations -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- React 18 Core & DOM UMD for Interactive React Components -->
   <script defer src="https://unpkg.com/react@18/umd/react.production.min.js"></script>

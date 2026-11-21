@@ -837,89 +837,53 @@ html.dark .about-avatar-frame img {
 }
 
 /* ==========================================================================
-   Interactive Photo-Based Avatar System (React 3D Parallax & Idle Float)
+   Frameless 3D Cartoon Avatar System (React + GSAP + ScrollTrigger)
    ========================================================================== */
 
-/* Outer wrapper */
-.avatar-interactive-wrapper {
-  perspective: 1200px;
-}
-
-/* Idle floating animation (vertical breathing-like motion) */
-@keyframes avatarIdleFloat {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-.avatar-idle-float {
-  animation: avatarIdleFloat 4s ease-in-out infinite;
-}
-
-/* 3D Card Shell */
-.avatar-3d-card {
+/* Character Stage: Frameless transparent stage */
+.avatar-character-stage {
   transform-style: preserve-3d;
   will-change: transform;
-  box-shadow: 
-    0 20px 35px -10px rgba(15, 23, 42, 0.12),
-    0 1px 3px 0 rgba(15, 23, 42, 0.05);
-  transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.avatar-3d-card:hover {
-  box-shadow: 
-    0 30px 60px -15px rgba(79, 70, 229, 0.22),
-    0 0 25px 0 rgba(79, 70, 229, 0.12);
+/* Avatar Image: High-clarity rendering with 3D perspective anchor */
+.avatar-character-img {
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 14px 20px rgba(15, 23, 42, 0.12));
+  transition: filter 0.3s ease;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-/* Ambient glow ring */
-.avatar-glow-ring {
-  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.25), rgba(168, 85, 247, 0.15), transparent 70%);
+.avatar-character-stage:hover .avatar-character-img {
+  filter: drop-shadow(0 20px 28px rgba(79, 70, 229, 0.22));
 }
 
-.avatar-3d-card:hover .avatar-glow-ring {
-  opacity: 1;
-  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.4), rgba(168, 85, 247, 0.25), transparent 70%);
-}
-
-/* Photo rendering */
-.avatar-photo {
-  will-change: transform;
-  object-position: 50% 20%;
-  filter: contrast(1.02) saturate(1.03);
+/* Ground shadow: dynamically scaled by GSAP with idle float */
+.avatar-ground-shadow {
+  will-change: transform, opacity;
+  transform-origin: center center;
 }
 
 /* Dark mode adjustments */
-html.dark .avatar-3d-card {
-  box-shadow: 
-    0 25px 45px -12px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.08);
+html.dark .avatar-character-img {
+  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.65)) brightness(1.02);
 }
 
-html.dark .avatar-3d-card:hover {
-  box-shadow: 
-    0 35px 70px -15px rgba(99, 102, 241, 0.3),
-    0 0 30px 0 rgba(99, 102, 241, 0.2);
+html.dark .avatar-character-stage:hover .avatar-character-img {
+  filter: drop-shadow(0 22px 32px rgba(99, 102, 241, 0.35)) brightness(1.04);
 }
 
-html.dark .avatar-glow-ring {
-  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.35), rgba(56, 189, 248, 0.2), transparent 70%);
+html.dark .avatar-ground-shadow {
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.25) 50%, transparent 75%) !important;
 }
 
-/* Accessibility: Reduced Motion Override */
+/* Accessibility: Respect prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
-  .avatar-idle-float {
-    animation: none !important;
-  }
-  .avatar-3d-card,
-  .avatar-photo,
-  .avatar-glow-ring {
+  .avatar-character-img,
+  .avatar-ground-shadow,
+  .avatar-halo {
     transform: none !important;
     transition: none !important;
   }
