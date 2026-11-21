@@ -183,20 +183,6 @@ window.PORTFOLIO_DATA = {
       type: "Leadership & Community",
       period: "2024 – Present",
       description: "Serving as Student Ambassador at Career Catalyst Club, actively driving campus engagement, technical workshops, industry mentorship outreach, and peer learning initiatives for aspiring engineers."
-    },
-    {
-      title: "Full-Stack Project Engineering",
-      organization: "Academic & Independent Development",
-      type: "Software Development",
-      period: "2023 – Present",
-      description: "Built full-stack web applications implementing responsive React user interfaces, modular Express/Node.js and Java backends, authenticated REST APIs, and database modeling with MongoDB and MySQL."
-    },
-    {
-      title: "Coding Community & Technical Peer Collaboration",
-      organization: "Goel Institute of Technology & Management",
-      type: "Technical Leadership & Community",
-      period: "2024 – Present",
-      description: "Active member of campus developer circles, engaging in algorithmic problem solving in Java, participating in coding challenges, and organizing peer study sessions on Data Science and Web Development."
     }
   ],
 
