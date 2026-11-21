@@ -209,19 +209,23 @@
         <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-200/80 bg-white/85 shadow-sm">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            <!-- Left Profile: Avatar (Free-Walk, No Frame) -->
+            <!-- Left Profile: Interactive Photo Avatar (React 3D Parallax & Idle Float) -->
             <div class="lg:col-span-5 flex flex-col items-center text-center">
 
-              <!-- Walk area: avatar walks freely across this space -->
-              <div id="avatarWalkZone" class="relative w-full h-72 sm:h-80 overflow-hidden select-none">
-                <img
-                  id="walkingAvatar"
-                  src="assets/avatar.jpg"
-                  alt="Janmejay Tiwari"
-                  class="absolute bottom-0 h-64 sm:h-72 w-auto object-contain object-bottom"
-                  draggable="false"
-                  loading="eager"
-                />
+              <!-- Interactive Avatar Root (Mounted via js/components/InteractiveAvatar.js) -->
+              <div id="interactive-avatar-root" class="w-full flex justify-center items-center py-1">
+                <!-- Fallback progressive enhancement while React mounts -->
+                <div class="avatar-interactive-wrapper relative flex flex-col items-center select-none py-2">
+                  <div class="avatar-motion-node avatar-idle-float">
+                    <div class="avatar-3d-card relative cursor-pointer" style="width: 260px; height: 320px; border-radius: 28px;">
+                      <div class="avatar-glow-ring absolute -inset-1.5 rounded-[32px] opacity-75 blur-md pointer-events-none"></div>
+                      <div class="avatar-inner-surface relative w-full h-full rounded-[28px] overflow-hidden border border-slate-200/90 dark:border-slate-700/80 bg-white/95 dark:bg-slate-800/95 shadow-xl">
+                        <img src="public/images/avatar.jpg" alt="Janmejay Tiwari" class="avatar-photo absolute inset-0 w-full h-full object-cover object-top" loading="eager" onerror="this.src='assets/avatar.jpg'" />
+                        <div class="avatar-vignette absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/10 to-transparent pointer-events-none"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <h3 class="text-xl font-bold text-slate-900 mt-2">Janmejay Tiwari</h3>
@@ -960,6 +964,10 @@
   <!-- Reusable Footer Container (Mounted via js/components/footer.js) -->
   <div id="site-footer"></div>
 
+  <!-- React 18 Core & DOM UMD for Interactive React Components -->
+  <script defer src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script defer src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
   <!-- Component Scripts & Data Layer with Defer for Performance -->
   <script defer src="js/data/portfolioData.js"></script>
   <script defer src="js/components/navbar.js"></script>
@@ -967,6 +975,7 @@
   <script defer src="js/components/sectionHeading.js"></script>
   <script defer src="js/components/projectCard.js"></script>
   <script defer src="js/components/socialLinks.js"></script>
+  <script defer src="js/components/InteractiveAvatar.js"></script>
   <script defer src="js/main.js"></script>
 
 </body>

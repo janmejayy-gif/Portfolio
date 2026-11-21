@@ -837,29 +837,90 @@ html.dark .about-avatar-frame img {
 }
 
 /* ==========================================================================
-   Avatar Free-Walk System (JS-driven, no frame, no bob)
+   Interactive Photo-Based Avatar System (React 3D Parallax & Idle Float)
    ========================================================================== */
 
-/* Walk zone: transparent, just a boundary */
-#avatarWalkZone {
-  position: relative;
+/* Outer wrapper */
+.avatar-interactive-wrapper {
+  perspective: 1200px;
 }
 
-/* The avatar image — JS sets left position each frame */
-#walkingAvatar {
-  transform-origin: center bottom;
-  transition: transform 0.18s ease; /* smooth scaleX flip */
-  will-change: left, transform;
-  image-rendering: auto;
-  user-select: none;
-  -webkit-user-drag: none;
+/* Idle floating animation (vertical breathing-like motion) */
+@keyframes avatarIdleFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
-/* Reduced-motion: freeze avatar in center, no JS walk */
+.avatar-idle-float {
+  animation: avatarIdleFloat 4s ease-in-out infinite;
+}
+
+/* 3D Card Shell */
+.avatar-3d-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  box-shadow: 
+    0 20px 35px -10px rgba(15, 23, 42, 0.12),
+    0 1px 3px 0 rgba(15, 23, 42, 0.05);
+  transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.avatar-3d-card:hover {
+  box-shadow: 
+    0 30px 60px -15px rgba(79, 70, 229, 0.22),
+    0 0 25px 0 rgba(79, 70, 229, 0.12);
+}
+
+/* Ambient glow ring */
+.avatar-glow-ring {
+  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.25), rgba(168, 85, 247, 0.15), transparent 70%);
+}
+
+.avatar-3d-card:hover .avatar-glow-ring {
+  opacity: 1;
+  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.4), rgba(168, 85, 247, 0.25), transparent 70%);
+}
+
+/* Photo rendering */
+.avatar-photo {
+  will-change: transform;
+  object-position: 50% 20%;
+  filter: contrast(1.02) saturate(1.03);
+}
+
+/* Dark mode adjustments */
+html.dark .avatar-3d-card {
+  box-shadow: 
+    0 25px 45px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+html.dark .avatar-3d-card:hover {
+  box-shadow: 
+    0 35px 70px -15px rgba(99, 102, 241, 0.3),
+    0 0 30px 0 rgba(99, 102, 241, 0.2);
+}
+
+html.dark .avatar-glow-ring {
+  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.35), rgba(56, 189, 248, 0.2), transparent 70%);
+}
+
+/* Accessibility: Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
-  #walkingAvatar {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+  .avatar-idle-float {
+    animation: none !important;
+  }
+  .avatar-3d-card,
+  .avatar-photo,
+  .avatar-glow-ring {
+    transform: none !important;
     transition: none !important;
   }
 }
