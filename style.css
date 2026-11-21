@@ -475,23 +475,226 @@ html.dark .bg-slate-200\/70 {
   background-color: rgba(71, 85, 105, 0.65) !important;
 }
 
-/* Text overrides in Dark Mode */
+/* Text overrides in Dark Mode - High Contrast & Crisp Visibility */
 html.dark .text-slate-900,
 html.dark .text-slate-800 {
-  color: #f8fafc !important;
+  color: #ffffff !important;
 }
 
 html.dark .text-slate-700,
 html.dark .text-slate-600 {
-  color: #cbd5e1 !important;
+  color: #e2e8f0 !important;
 }
 
 html.dark .text-slate-500 {
-  color: #94a3b8 !important;
+  color: #cbd5e1 !important;
 }
 
 html.dark .text-slate-400 {
-  color: #64748b !important;
+  color: #94a3b8 !important;
+}
+
+/* Fix Hero Headline Dark Gradient in Dark Mode */
+html.dark .hero-gradient-title,
+html.dark #hero h1 span.bg-gradient-to-r:first-of-type,
+html.dark .from-slate-950 {
+  background: linear-gradient(to right, #ffffff 0%, #e0e7ff 50%, #c7d2fe 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+/* Fix Strong, Bold and Headings in Dark Mode */
+html.dark strong,
+html.dark b,
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4 {
+  color: #ffffff !important;
+}
+
+/* Fix Colored Headings & Labels in Dark Mode (Problem Statement, Solution, Badges) */
+html.dark .text-indigo-800,
+html.dark .text-indigo-700,
+html.dark .text-indigo-600 {
+  color: #a5b4fc !important;
+}
+
+html.dark .text-rose-800,
+html.dark .text-rose-700,
+html.dark .text-rose-600 {
+  color: #fda4af !important;
+}
+
+html.dark .text-emerald-800,
+html.dark .text-emerald-700,
+html.dark .text-emerald-600 {
+  color: #6ee7b7 !important;
+}
+
+html.dark .text-amber-800,
+html.dark .text-amber-700,
+html.dark .text-amber-600 {
+  color: #fde047 !important;
+}
+
+html.dark .text-cyan-800,
+html.dark .text-cyan-700,
+html.dark .text-cyan-600 {
+  color: #67e8f9 !important;
+}
+
+html.dark .text-purple-800,
+html.dark .text-purple-700,
+html.dark .text-purple-600 {
+  color: #d8b4fe !important;
+}
+
+html.dark .text-sky-800,
+html.dark .text-sky-700,
+html.dark .text-sky-600 {
+  color: #7dd3fc !important;
+}
+
+/* Fix Alert & Callout Boxes in Project Cards */
+html.dark .bg-rose-50,
+html.dark .bg-rose-50\/50,
+html.dark [class*="bg-rose-50"] {
+  background-color: rgba(244, 63, 94, 0.12) !important;
+  border-color: rgba(244, 63, 94, 0.3) !important;
+  color: #fecdd3 !important;
+}
+html.dark .bg-rose-50 p,
+html.dark .bg-rose-50\/50 p,
+html.dark [class*="bg-rose-50"] p {
+  color: #fecdd3 !important;
+}
+
+html.dark .bg-indigo-50,
+html.dark .bg-indigo-50\/50,
+html.dark [class*="bg-indigo-50"] {
+  background-color: rgba(99, 102, 241, 0.14) !important;
+  border-color: rgba(99, 102, 241, 0.3) !important;
+  color: #c7d2fe !important;
+}
+html.dark .bg-indigo-50 p,
+html.dark .bg-indigo-50\/50 p,
+html.dark [class*="bg-indigo-50"] p {
+  color: #c7d2fe !important;
+}
+
+/* Badges & Tags in Skills, Education & Experience */
+html.dark .bg-emerald-50,
+html.dark [class*="bg-emerald-50"] {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+  color: #6ee7b7 !important;
+}
+
+html.dark .bg-cyan-50,
+html.dark [class*="bg-cyan-50"] {
+  background-color: rgba(6, 182, 212, 0.15) !important;
+  border-color: rgba(6, 182, 212, 0.35) !important;
+  color: #67e8f9 !important;
+}
+
+html.dark .bg-sky-50,
+html.dark [class*="bg-sky-50"] {
+  background-color: rgba(14, 165, 233, 0.15) !important;
+  border-color: rgba(14, 165, 233, 0.35) !important;
+  color: #7dd3fc !important;
+}
+
+html.dark .bg-purple-50,
+html.dark [class*="bg-purple-50"] {
+  background-color: rgba(168, 85, 247, 0.15) !important;
+  border-color: rgba(168, 85, 247, 0.35) !important;
+  color: #d8b4fe !important;
+}
+
+html.dark .bg-amber-50,
+html.dark [class*="bg-amber-50"] {
+  background-color: rgba(245, 158, 11, 0.15) !important;
+  border-color: rgba(245, 158, 11, 0.35) !important;
+  color: #fde047 !important;
+}
+
+/* Fix light-tinted borders in Dark Mode */
+html.dark [class*="border-cyan-100"],
+html.dark [class*="border-amber-100"],
+html.dark [class*="border-sky-100"],
+html.dark [class*="border-emerald-100"],
+html.dark [class*="border-indigo-100"],
+html.dark [class*="border-purple-100"],
+html.dark [class*="border-rose-100"],
+html.dark [class*="border-emerald-200"],
+html.dark [class*="border-amber-200"],
+html.dark [class*="border-indigo-200"] {
+  border-color: rgba(71, 85, 105, 0.45) !important;
+}
+
+/* All Slate-100 Badges, Tags & Completed Pills */
+html.dark span.bg-slate-100,
+html.dark div.bg-slate-100,
+html.dark .bg-slate-100 {
+  background-color: rgba(51, 65, 85, 0.8) !important;
+  color: #f1f5f9 !important;
+  border-color: rgba(71, 85, 105, 0.6) !important;
+}
+
+html.dark span.bg-slate-100.text-slate-600,
+html.dark span.bg-slate-100.text-slate-700,
+html.dark span.bg-slate-100.text-slate-800 {
+  color: #f1f5f9 !important;
+}
+
+/* Timeline Nodes in Experience & Education */
+html.dark .border-4[class*="bg-white"],
+html.dark .border-2[class*="bg-white"],
+html.dark [class*="rounded-full"].bg-white {
+  background-color: #1e293b !important;
+}
+
+/* List Item Hover in Skills */
+html.dark .hover\:bg-slate-50:hover {
+  background-color: rgba(51, 65, 85, 0.5) !important;
+}
+
+/* Demo Links & Repo Buttons in Projects */
+html.dark .project-card a[class*="text-slate-900"] {
+  color: #818cf8 !important;
+}
+html.dark .project-card a[class*="text-slate-900"]:hover {
+  color: #a5b4fc !important;
+}
+
+/* Profile Outer Ring in About Me */
+html.dark [class*="from-slate-100"][class*="to-indigo-50"] {
+  background: linear-gradient(to top right, #1e293b, #334155) !important;
+}
+
+/* Mobile Navigation Menu Drawer */
+html.dark #mobileMenu {
+  background-color: rgba(30, 41, 59, 0.98) !important;
+  border-color: rgba(71, 85, 105, 0.8) !important;
+}
+html.dark .mobile-nav-link {
+  color: #e2e8f0 !important;
+}
+html.dark .mobile-nav-link:hover {
+  background-color: rgba(51, 65, 85, 0.6) !important;
+  color: #ffffff !important;
+}
+html.dark #mobileMenuBtn {
+  color: #f8fafc !important;
+}
+
+/* Lucide SVGs High Contrast */
+html.dark i[data-lucide] svg,
+html.dark svg.lucide {
+  color: inherit;
 }
 
 /* Border overrides in Dark Mode */
@@ -603,37 +806,6 @@ html.dark .timeline-card.active {
 
 html.dark #wavePathBg {
   stroke: rgba(100, 116, 139, 0.4) !important;
-}
-
-/* Badges in Dark Mode */
-html.dark .bg-indigo-50 {
-  background-color: rgba(79, 70, 229, 0.18) !important;
-  color: #a5b4fc !important;
-  border-color: rgba(99, 102, 241, 0.3) !important;
-}
-
-html.dark .bg-emerald-50 {
-  background-color: rgba(16, 185, 129, 0.18) !important;
-  color: #6ee7b7 !important;
-  border-color: rgba(16, 185, 129, 0.3) !important;
-}
-
-html.dark .bg-sky-50, html.dark .bg-cyan-50 {
-  background-color: rgba(14, 165, 233, 0.18) !important;
-  color: #7dd3fc !important;
-  border-color: rgba(14, 165, 233, 0.3) !important;
-}
-
-html.dark .bg-purple-50 {
-  background-color: rgba(168, 85, 247, 0.18) !important;
-  color: #d8b4fe !important;
-  border-color: rgba(168, 85, 247, 0.3) !important;
-}
-
-html.dark .bg-amber-50 {
-  background-color: rgba(245, 158, 11, 0.18) !important;
-  color: #fcd34d !important;
-  border-color: rgba(245, 158, 11, 0.3) !important;
 }
 
 /* Footer in Dark Mode */
