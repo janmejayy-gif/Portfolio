@@ -209,16 +209,22 @@
         <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-200/80 bg-white/85 shadow-sm">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            <!-- Left Profile Monogram -->
+            <!-- Left Profile: Avatar Illustration -->
             <div class="lg:col-span-5 flex flex-col items-center text-center">
               <div class="relative mb-5">
-                <div class="w-40 h-40 sm:w-48 sm:h-48 rounded-3xl bg-gradient-to-tr from-slate-100 to-indigo-50 border border-slate-200/90 flex items-center justify-center p-2.5 shadow-inner">
-                  <div class="w-full h-full rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 flex flex-col items-center justify-center text-white text-center p-4">
-                    <span class="text-3xl sm:text-4xl font-extrabold font-mono tracking-tighter mb-1">&lt;JT/&gt;</span>
-                    <span class="text-xs font-mono text-indigo-300 font-medium">JANMEJAY TIWARI</span>
-                    <span class="text-[10px] text-slate-400 mt-1 font-mono">CSE (Data Science)</span>
-                  </div>
+                <!-- Avatar Container with clean rounded frame -->
+                <div class="relative w-56 h-64 sm:w-64 sm:h-72 rounded-3xl overflow-hidden border-2 border-slate-200/90 shadow-xl bg-gradient-to-b from-slate-50 to-indigo-50/40">
+                  <img 
+                    src="assets/avatar.jpg" 
+                    alt="Janmejay Tiwari - Avatar illustration" 
+                    class="w-full h-full object-cover object-top"
+                    loading="eager"
+                    draggable="false"
+                  />
+                  <!-- Subtle gradient overlay at bottom for text readability -->
+                  <div class="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-white/30 to-transparent pointer-events-none"></div>
                 </div>
+                <!-- Status Badge -->
                 <div class="absolute -bottom-2.5 -right-2 px-3 py-1 rounded-full bg-white border border-slate-200/90 shadow-md text-[11px] font-semibold text-slate-800 flex items-center gap-1.5">
                   <span class="w-2 h-2 rounded-full bg-emerald-500"></span> B.Tech CSE (DS)
                 </div>
