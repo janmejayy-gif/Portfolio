@@ -99,14 +99,14 @@ window.PORTFOLIO_DATA = {
       id: "agrifair",
       name: "AgriFair",
       category: "fullstack",
-      categoryLabel: "Agritech Marketplace Platform",
-      summary: "Agriculture-focused digital marketplace empowering farmers with fair trade access.",
-      problemStatement: "Small-scale agricultural producers are constrained by multi-tier middlemen, lack of real-time wholesale price transparency, and high logistic friction that diminishes farmer profits.",
-      solution: "Engineered a decentralized marketplace architecture connecting agricultural producers directly to commercial buyers and consumers, featuring transparent produce cataloging, live price indexing, and secure order inquiry channels.",
-      techStack: ["React", "JavaScript", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
-      githubUrl: "https://github.com",
+      categoryLabel: "36H National Hackathon Winner • Agritech",
+      summary: "Consolation Prize Winner at Chandigarh University 36-Hour National Hackathon with Team Algoriders. Built to empower farmers through localized market fair-trade, spatial telemetry, and voice-assisted digital commerce.",
+      problemStatement: "Small-scale agricultural producers are constrained by multi-tier middlemen, opaque regional wholesale pricing, complex digital literacy barriers, and fragmented logistics with no localized spatial mapping.",
+      solution: "Engineered an end-to-end Agritech platform where I led the responsive frontend development, integrated interactive Geo Maps for farm-to-mandi tracking, engineered a real-time negotiation chat system, and implemented an AI Voice Assistant for hands-free local dialect accessibility.",
+      techStack: ["React", "JavaScript", "Geo Maps API", "AI Voice Assistant", "Real-Time Chat", "Node.js", "Express", "Tailwind CSS"],
+      githubUrl: "https://github.com/janmejayy-gif/Portfolio",
       demoUrl: null,
-      status: "Prototype Ready",
+      status: "Hackathon Winner",
       verified: true
     },
     {
@@ -171,11 +171,18 @@ window.PORTFOLIO_DATA = {
 
   experienceAndAchievements: [
     {
-      title: "Technical Hackathons & Collaborative Sprints",
-      organization: "Institutional & Inter-College Hackathons",
-      type: "Competitive Hackathons",
-      period: "2023 – Present",
-      description: "Spearheaded frontend and backend architecture for agritech prototypes (JALRAKSHAK, AgriFair) and urban logistics concepts under rapid 24-48 hour prototyping sprints. Collaborated on API design, schema structuring, and live solution pitches."
+      title: "Consolation Winner — 36-Hour National Hackathon",
+      organization: "Chandigarh University • Team Algoriders",
+      type: "National Hackathon",
+      period: "2024",
+      description: "Bagged the Consolation Award at the intensive 36-Hour National Hackathon held at Chandigarh University competing as Team Algoriders. Developed AgriFair, architecting the complete frontend system, integrating interactive Geo Maps, building a real-time buyer-seller chat system, and integrating an AI voice assistant."
+    },
+    {
+      title: "Ambassador",
+      organization: "Career Catalyst Club",
+      type: "Leadership & Community",
+      period: "2024 – Present",
+      description: "Serving as Student Ambassador at Career Catalyst Club, actively driving campus engagement, technical workshops, industry mentorship outreach, and peer learning initiatives for aspiring engineers."
     },
     {
       title: "Full-Stack Project Engineering",
@@ -188,7 +195,7 @@ window.PORTFOLIO_DATA = {
       title: "Coding Community & Technical Peer Collaboration",
       organization: "Goel Institute of Technology & Management",
       type: "Technical Leadership & Community",
-      period: "2023 – Present",
+      period: "2024 – Present",
       description: "Active member of campus developer circles, engaging in algorithmic problem solving in Java, participating in coding challenges, and organizing peer study sessions on Data Science and Web Development."
     }
   ],
