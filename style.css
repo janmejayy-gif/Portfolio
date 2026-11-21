@@ -836,6 +836,86 @@ html.dark .about-avatar-frame img {
   filter: brightness(0.95);
 }
 
+/* ==========================================================================
+   Avatar Walking Animation System
+   ========================================================================== */
+
+/* Stage container */
+.avatar-stage {
+  position: relative;
+}
+
+/* The walker travels left → right → left in a loop */
+@keyframes avatarWalk {
+  0%   { transform: translateX(-60px) scaleX(1);   }
+  48%  { transform: translateX(60px)  scaleX(1);   }
+  50%  { transform: translateX(60px)  scaleX(-1);  } /* flip: face left */
+  98%  { transform: translateX(-60px) scaleX(-1);  }
+  100% { transform: translateX(-60px) scaleX(1);   } /* flip back: face right */
+}
+
+/* Subtle body-bob while walking (up-down natural gait) */
+@keyframes avatarBob {
+  0%, 100% { transform: translateY(0px)  rotate(0deg);   }
+  25%       { transform: translateY(-6px) rotate(-0.6deg);}
+  50%       { transform: translateY(0px)  rotate(0deg);   }
+  75%       { transform: translateY(-6px) rotate(0.6deg); }
+}
+
+/* Ground shadow breathes with the bob */
+@keyframes shadowPulse {
+  0%, 100% { transform: translateX(-50%) scaleX(1);   opacity: 0.5; }
+  25%, 75% { transform: translateX(-50%) scaleX(0.75); opacity: 0.3; }
+}
+
+.avatar-walker {
+  animation: avatarWalk 5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  transform-origin: center bottom;
+}
+
+.avatar-img {
+  animation: avatarBob 0.72s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.avatar-shadow {
+  animation: shadowPulse 0.72s ease-in-out infinite;
+}
+
+/* Hover to pause the walk (friendly easter egg) */
+.avatar-stage:hover .avatar-walker,
+.avatar-stage:hover .avatar-img,
+.avatar-stage:hover .avatar-shadow {
+  animation-play-state: paused;
+}
+
+/* Dark mode: stage background */
+html.dark .avatar-stage {
+  background: linear-gradient(to bottom, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.5)) !important;
+  border-color: rgba(71, 85, 105, 0.6) !important;
+}
+html.dark .avatar-stage .pointer-events-none.bg-gradient-to-r {
+  background: linear-gradient(to right, rgba(15, 23, 42, 0.9), transparent) !important;
+}
+html.dark .avatar-stage .pointer-events-none.bg-gradient-to-l {
+  background: linear-gradient(to left, rgba(15, 23, 42, 0.9), transparent) !important;
+}
+html.dark .avatar-stage .bottom-8.left-0.right-0 {
+  background-color: rgba(71, 85, 105, 0.3) !important;
+}
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .avatar-walker,
+  .avatar-img,
+  .avatar-shadow {
+    animation: none !important;
+  }
+  .avatar-walker {
+    transform: translateX(0) scaleX(1) !important;
+  }
+}
+
 /* Global Transitions for Seamless Theme Flip */
 body, 
 .ambient-bg, 

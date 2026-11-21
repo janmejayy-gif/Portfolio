@@ -209,21 +209,35 @@
         <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-200/80 bg-white/85 shadow-sm">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            <!-- Left Profile: Avatar Illustration -->
+            <!-- Left Profile: Avatar Illustration (Walking Animation) -->
             <div class="lg:col-span-5 flex flex-col items-center text-center">
               <div class="relative mb-5">
-                <!-- Avatar Container with clean rounded frame -->
-                <div class="relative w-56 h-64 sm:w-64 sm:h-72 rounded-3xl overflow-hidden border-2 border-slate-200/90 shadow-xl bg-gradient-to-b from-slate-50 to-indigo-50/40">
-                  <img 
-                    src="assets/avatar.jpg" 
-                    alt="Janmejay Tiwari - Avatar illustration" 
-                    class="w-full h-full object-cover object-top"
-                    loading="eager"
-                    draggable="false"
-                  />
-                  <!-- Subtle gradient overlay at bottom for text readability -->
-                  <div class="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-white/30 to-transparent pointer-events-none"></div>
+
+                <!-- Walking track / stage -->
+                <div class="avatar-stage relative w-72 h-80 sm:w-80 sm:h-88 overflow-hidden rounded-3xl bg-gradient-to-b from-slate-50 via-indigo-50/20 to-transparent border border-slate-200/80 shadow-lg">
+
+                  <!-- Ground line -->
+                  <div class="absolute bottom-8 left-0 right-0 h-px bg-slate-200/60"></div>
+
+                  <!-- Shadow on ground -->
+                  <div class="avatar-shadow absolute bottom-5 left-1/2 -translate-x-1/2 w-28 h-4 bg-slate-900/10 rounded-full blur-md"></div>
+
+                  <!-- The walking avatar -->
+                  <div class="avatar-walker absolute bottom-8 left-0">
+                    <img
+                      src="assets/avatar.jpg"
+                      alt="Janmejay Tiwari"
+                      class="avatar-img h-64 sm:h-72 w-auto object-contain object-bottom select-none"
+                      draggable="false"
+                      loading="eager"
+                    />
+                  </div>
+
+                  <!-- Subtle vignette left & right so avatar fades in/out smoothly -->
+                  <div class="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-slate-50/80 to-transparent"></div>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-slate-50/80 to-transparent"></div>
                 </div>
+
                 <!-- Status Badge -->
                 <div class="absolute -bottom-2.5 -right-2 px-3 py-1 rounded-full bg-white border border-slate-200/90 shadow-md text-[11px] font-semibold text-slate-800 flex items-center gap-1.5">
                   <span class="w-2 h-2 rounded-full bg-emerald-500"></span> B.Tech CSE (DS)
