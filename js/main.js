@@ -230,4 +230,60 @@ document.addEventListener('DOMContentLoaded', () => {
       contactForm.reset();
     });
   }
+
+  // 11. Interactive Undulating Education Timeline (GfG x OpenAI Curved Roadmap Style)
+  const timelineNodes = document.querySelectorAll('.timeline-node');
+  const timelineCards = document.querySelectorAll('.timeline-card');
+  const wavePath = document.getElementById('wavePathActive');
+
+  function setEducationStep(stepIndex) {
+    timelineNodes.forEach(node => {
+      const nodeStep = parseInt(node.getAttribute('data-step'), 10);
+      if (nodeStep === stepIndex) {
+        node.classList.add('active');
+        node.setAttribute('aria-current', 'step');
+      } else {
+        node.classList.remove('active');
+        node.removeAttribute('aria-current');
+      }
+    });
+
+    timelineCards.forEach(card => {
+      const cardStep = parseInt(card.getAttribute('data-step'), 10);
+      if (cardStep === stepIndex) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
+
+    if (wavePath) {
+      // Stroke dashoffset: 1000 = empty, 0 = fully highlighted
+      // Step 0: ~350, Step 1: ~700, Step 2: 1000
+      if (stepIndex === 0) {
+        wavePath.style.strokeDashoffset = '650';
+      } else if (stepIndex === 1) {
+        wavePath.style.strokeDashoffset = '300';
+      } else {
+        wavePath.style.strokeDashoffset = '0';
+      }
+    }
+  }
+
+  timelineNodes.forEach(node => {
+    node.addEventListener('click', () => {
+      const step = parseInt(node.getAttribute('data-step'), 10);
+      setEducationStep(step);
+    });
+  });
+
+  timelineCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const step = parseInt(card.getAttribute('data-step'), 10);
+      setEducationStep(step);
+    });
+  });
+
+  // Default active step on load: Step 2 (B.Tech)
+  setEducationStep(2);
 });
