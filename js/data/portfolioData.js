@@ -143,11 +143,17 @@ window.PORTFOLIO_DATA = {
 
   experienceAndAchievements: [
     {
-      title: "Consolation Winner — 36-Hour National Hackathon",
+      title: "Consolation Winner — Zinnovatio 4.0 (36-Hour National Hackathon)",
       organization: "Chandigarh University • Team Algoriders",
       type: "National Hackathon",
       period: "2024",
-      description: "Bagged the Consolation Award at the intensive 36-Hour National Hackathon held at Chandigarh University competing as Team Algoriders. Developed AgriFair, architecting the complete frontend system, integrating interactive Geo Maps, building a real-time buyer-seller chat system, and integrating an AI voice assistant."
+      description: "Bagged the Consolation Award at the intensive 36-Hour National Hackathon (Zinnovatio 4.0) held at Chandigarh University competing as Team Algoriders. Developed AgriFair, architecting the complete frontend system, integrating interactive Geo Maps, building a real-time buyer-seller chat system, and integrating an AI voice assistant.",
+      photos: [
+        { src: "assets/hackathon/zinnovatio-solo.jpg", label: "Event Badge" },
+        { src: "assets/hackathon/zinnovatio-team.jpg", label: "Team Algoriders" },
+        { src: "assets/hackathon/zinnovatio-certificate.jpg", label: "Official Certificate" },
+        { src: "assets/hackathon/zinnovatio-venue.jpg", label: "Campus Arena" }
+      ]
     },
     {
       title: "Ambassador",

@@ -391,4 +391,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.15 });
     contactPulseObserver.observe(contactSection);
   }
+
+  // 14. Accessible Lightbox Modal System for Hackathon Photos & Certificate
+  window.openImageModal = function(src, caption) {
+    const modal = document.getElementById('imageModal');
+    const img = document.getElementById('modalImage');
+    const cap = document.getElementById('modalCaption');
+    if (!modal || !img) return;
+
+    img.src = src;
+    img.alt = caption || 'Photo Preview';
+    if (cap) cap.textContent = caption || '';
+
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    if (window.lucide) window.lucide.createIcons();
+  };
+
+  window.closeImageModal = function(e) {
+    // If clicked on image itself, do not close
+    if (e && e.target && e.target.id === 'modalImage') return;
+    const modal = document.getElementById('imageModal');
+    if (!modal) return;
+
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      window.closeImageModal();
+    }
+  });
 });
