@@ -889,6 +889,92 @@ html.dark .avatar-ground-shadow {
   }
 }
 
+/* ==========================================================================
+   Contact Heartbeat Ray Grid Animation
+   ========================================================================== */
+.contact-heartbeat-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Subtle localized grid in contact section */
+.contact-grid-overlay {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(99, 102, 241, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse 95% 85% at 50% 50%, #000 65%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 95% 85% at 50% 50%, #000 65%, transparent 100%);
+}
+
+/* Baseline faint ECG guide */
+.contact-ecg-baseline {
+  stroke: rgba(99, 102, 241, 0.12);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Traveling Heartbeat Ray */
+.contact-ecg-ray {
+  stroke: url(#ecgGlowGradient);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 280 2000;
+  stroke-dashoffset: 2280;
+  filter: drop-shadow(0 0 6px rgba(79, 70, 229, 0.8)) drop-shadow(0 0 16px rgba(56, 189, 248, 0.6));
+  animation: ecgRaySweep 3.2s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+}
+
+@keyframes ecgRaySweep {
+  0% {
+    stroke-dashoffset: 2280;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -320;
+    opacity: 0;
+  }
+}
+
+/* Dark mode styling: High-intensity neon matrix pulse */
+html.dark .contact-grid-overlay {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(56, 189, 248, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.15) 1px, transparent 1px);
+}
+
+html.dark .contact-ecg-baseline {
+  stroke: rgba(56, 189, 248, 0.18);
+  stroke-width: 1.5;
+}
+
+html.dark .contact-ecg-ray {
+  stroke: url(#ecgGlowGradientDark);
+  stroke-width: 4;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.95)) drop-shadow(0 0 22px rgba(99, 102, 241, 0.85)) drop-shadow(0 0 38px rgba(56, 189, 248, 0.55));
+}
+
+/* Reduced motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  .contact-ecg-ray {
+    animation: none !important;
+    stroke-dasharray: none !important;
+    opacity: 0.2 !important;
+  }
+}
+
 /* Global Transitions for Seamless Theme Flip */
 body, 
 .ambient-bg, 

@@ -374,4 +374,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
   }, { passive: true });
+
+  // 13. Contact Section Heartbeat Ray Attention Pulse
+  const contactSection = document.getElementById('contact');
+  const ecgRay = document.querySelector('.contact-ecg-ray');
+  if (contactSection && ecgRay && window.IntersectionObserver) {
+    const contactPulseObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Immediately restart and accelerate heartbeat pulse wave when user reaches contact section
+          ecgRay.style.animation = 'none';
+          void ecgRay.offsetWidth; // force browser layout reflow
+          ecgRay.style.animation = 'ecgRaySweep 3s cubic-bezier(0.25, 0.1, 0.25, 1) infinite';
+        }
+      });
+    }, { threshold: 0.15 });
+    contactPulseObserver.observe(contactSection);
+  }
 });

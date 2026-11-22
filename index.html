@@ -861,8 +861,41 @@
 
 
     <!-- 7. CONTACT SECTION -->
-    <section id="contact" class="py-24 px-4 sm:px-6 bg-slate-50/50">
-      <div class="max-w-4xl mx-auto reveal-on-scroll">
+    <section id="contact" class="relative py-24 px-4 sm:px-6 bg-slate-50/50 overflow-hidden">
+
+      <!-- Heartbeat Cyber Pulse Grid Layer (Background attention-catcher) -->
+      <div class="contact-heartbeat-layer absolute inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+        <!-- Grid overlay matching ambient grid -->
+        <div class="contact-grid-overlay absolute inset-0"></div>
+        
+        <!-- Heartbeat ECG Ray Wave passing behind the card -->
+        <div class="contact-pulse-track absolute w-full top-1/2 -translate-y-1/2 left-0 right-0">
+          <svg class="w-full h-40 sm:h-48" viewBox="0 0 1440 180" fill="none" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="ecgGlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#4f46e5" stop-opacity="0" />
+                <stop offset="40%" stop-color="#6366f1" stop-opacity="0.85" />
+                <stop offset="75%" stop-color="#38bdf8" stop-opacity="1" />
+                <stop offset="100%" stop-color="#10b981" stop-opacity="1" />
+              </linearGradient>
+              <linearGradient id="ecgGlowGradientDark" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
+                <stop offset="35%" stop-color="#818cf8" stop-opacity="0.9" />
+                <stop offset="70%" stop-color="#06b6d4" stop-opacity="1" />
+                <stop offset="100%" stop-color="#34d399" stop-opacity="1" />
+              </linearGradient>
+            </defs>
+
+            <!-- Faint ambient baseline path -->
+            <path class="contact-ecg-baseline" d="M 0,90 L 320,90 L 340,84 L 350,96 L 360,90 L 400,90 L 415,55 L 430,135 L 450,15 L 470,115 L 485,78 L 500,90 L 550,90 L 570,78 L 590,90 L 880,90 L 900,84 L 910,96 L 920,90 L 960,90 L 975,55 L 990,135 L 1010,15 L 1030,115 L 1045,78 L 1060,90 L 1110,90 L 1130,78 L 1150,90 L 1440,90" />
+
+            <!-- Dynamic Traveling Pulse Ray (Heartbeat Beam) -->
+            <path class="contact-ecg-ray" d="M 0,90 L 320,90 L 340,84 L 350,96 L 360,90 L 400,90 L 415,55 L 430,135 L 450,15 L 470,115 L 485,78 L 500,90 L 550,90 L 570,78 L 590,90 L 880,90 L 900,84 L 910,96 L 920,90 L 960,90 L 975,55 L 990,135 L 1010,15 L 1030,115 L 1045,78 L 1060,90 L 1110,90 L 1130,78 L 1150,90 L 1440,90" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="max-w-4xl mx-auto reveal-on-scroll relative z-10">
         
         <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-200/80 bg-white/95 shadow-lg">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
