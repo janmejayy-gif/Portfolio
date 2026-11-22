@@ -319,6 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Restore saved theme on load (if previously toggled)
+  let isManualOverride = sessionStorage.getItem('portfolio_manual_theme_override') === 'true';
   const savedTheme = localStorage.getItem('portfolio_theme');
   if (savedTheme === 'dark') {
     window.setTheme(true, false);
@@ -328,13 +329,18 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', (e) => {
     const btn = e.target.closest('.theme-toggle-btn');
     if (btn) {
+      // User explicitly switched theme manually: lock out automatic scroll triggers
+      isManualOverride = true;
+      sessionStorage.setItem('portfolio_manual_theme_override', 'true');
       const isDark = document.documentElement.classList.contains('dark');
       window.setTheme(!isDark, true);
     }
   });
 
-  // Scroll listener for bottom-to-up gesture
+  // Scroll listener for bottom-to-up gesture (only active when not manually overridden)
   window.addEventListener('scroll', () => {
+    if (isManualOverride) return;
+
     const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
     const windowHeight = window.innerHeight;
     const docHeight = document.documentElement.scrollHeight;
