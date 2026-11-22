@@ -82,20 +82,6 @@ window.PORTFOLIO_DATA = {
 
   projects: [
     {
-      id: "jalrakshak",
-      name: "JALRAKSHAK",
-      category: "fullstack",
-      categoryLabel: "Smart Agriculture & Water Management",
-      summary: "Agriculture-focused smart irrigation and water conservation management platform.",
-      problemStatement: "Traditional agricultural irrigation results in severe water depletion, unequal distribution across farmland sectors, and crop damage due to the absence of continuous soil telemetry and intelligent scheduling.",
-      solution: "Architected an integrated IoT-compatible software platform that ingests real-time soil moisture and environmental metrics, automatically computes precise hydration requirements, and schedules optimal water release to minimize waste and boost crop yield.",
-      techStack: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "REST APIs"],
-      githubUrl: "https://github.com",
-      demoUrl: null,
-      status: "Active Prototype",
-      verified: true
-    },
-    {
       id: "agrifair",
       name: "AgriFair",
       category: "fullstack",
@@ -121,20 +107,6 @@ window.PORTFOLIO_DATA = {
       githubUrl: "https://github.com",
       demoUrl: null,
       status: "Analytical Model & Prototype",
-      verified: true
-    },
-    {
-      id: "wait",
-      name: "WAIT",
-      category: "fullstack",
-      categoryLabel: "Transit Telemetry & Urban Mobility",
-      summary: "Public transport bus scheduling and seat availability concept.",
-      problemStatement: "Urban commuters face prolonged, unpredictable transit waits and dangerous over-crowding due to lack of real-time passenger occupancy telemetry and dynamic schedule updates.",
-      solution: "Designed a lightweight public transport monitoring web interface that provides live route scheduling, dynamic ETA calculations, and transparent seat availability indicators to streamline daily commuter transit.",
-      techStack: ["React", "Node.js", "Express", "JavaScript", "Tailwind CSS", "REST APIs"],
-      githubUrl: "https://github.com",
-      demoUrl: null,
-      status: "Concept & Interface",
       verified: true
     }
   ],
