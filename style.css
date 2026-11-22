@@ -910,39 +910,43 @@ html.dark .avatar-ground-shadow {
   -webkit-mask-image: radial-gradient(ellipse 95% 85% at 50% 50%, #000 65%, transparent 100%);
 }
 
-/* Baseline faint ECG guide */
+/* Baseline faint ECG guide (Subtle so only the animated pulse commands focus) */
 .contact-ecg-baseline {
-  stroke: rgba(99, 102, 241, 0.12);
-  stroke-width: 1.5;
+  stroke: rgba(99, 102, 241, 0.08);
+  stroke-width: 1.2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-/* Traveling Heartbeat Ray */
+/* Traveling Heartbeat Ray (Light Mode - Enhanced Vivid Luminous Laser Pulse) */
 .contact-ecg-ray {
   stroke: url(#ecgGlowGradient);
-  stroke-width: 3.5;
+  stroke-width: 4.5;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 280 2000;
-  stroke-dashoffset: 2280;
-  filter: drop-shadow(0 0 6px rgba(79, 70, 229, 0.8)) drop-shadow(0 0 16px rgba(56, 189, 248, 0.6));
-  animation: ecgRaySweep 3.2s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  stroke-dasharray: 380 2400;
+  stroke-dashoffset: 2780;
+  filter: 
+    drop-shadow(0 0 3px rgba(67, 56, 202, 0.95))
+    drop-shadow(0 0 10px rgba(79, 70, 229, 0.85))
+    drop-shadow(0 0 22px rgba(2, 132, 199, 0.7))
+    drop-shadow(0 0 36px rgba(16, 185, 129, 0.45));
+  animation: ecgRaySweep 3.4s cubic-bezier(0.22, 0.08, 0.22, 1) infinite;
 }
 
 @keyframes ecgRaySweep {
   0% {
-    stroke-dashoffset: 2280;
+    stroke-dashoffset: 2780;
     opacity: 0;
   }
-  15% {
+  12% {
     opacity: 1;
   }
-  85% {
+  88% {
     opacity: 1;
   }
   100% {
-    stroke-dashoffset: -320;
+    stroke-dashoffset: -400;
     opacity: 0;
   }
 }

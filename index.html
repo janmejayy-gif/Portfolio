@@ -872,12 +872,15 @@
         <div class="contact-pulse-track absolute w-full top-1/2 -translate-y-1/2 left-0 right-0">
           <svg class="w-full h-40 sm:h-48" viewBox="0 0 1440 180" fill="none" preserveAspectRatio="none">
             <defs>
+              <!-- High-Contrast Luminous Ray Gradient for Light Mode -->
               <linearGradient id="ecgGlowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#4f46e5" stop-opacity="0" />
-                <stop offset="40%" stop-color="#6366f1" stop-opacity="0.85" />
-                <stop offset="75%" stop-color="#38bdf8" stop-opacity="1" />
+                <stop offset="0%" stop-color="#4338ca" stop-opacity="0" />
+                <stop offset="25%" stop-color="#4f46e5" stop-opacity="0.9" />
+                <stop offset="55%" stop-color="#0284c7" stop-opacity="1" />
+                <stop offset="85%" stop-color="#06b6d4" stop-opacity="1" />
                 <stop offset="100%" stop-color="#10b981" stop-opacity="1" />
               </linearGradient>
+              <!-- Preserved Neon Gradient for Dark Mode -->
               <linearGradient id="ecgGlowGradientDark" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
                 <stop offset="35%" stop-color="#818cf8" stop-opacity="0.9" />
@@ -886,11 +889,11 @@
               </linearGradient>
             </defs>
 
-            <!-- Faint ambient baseline path -->
-            <path class="contact-ecg-baseline" d="M 0,90 L 320,90 L 340,84 L 350,96 L 360,90 L 400,90 L 415,55 L 430,135 L 450,15 L 470,115 L 485,78 L 500,90 L 550,90 L 570,78 L 590,90 L 880,90 L 900,84 L 910,96 L 920,90 L 960,90 L 975,55 L 990,135 L 1010,15 L 1030,115 L 1045,78 L 1060,90 L 1110,90 L 1130,78 L 1150,90 L 1440,90" />
+            <!-- Faint ambient baseline path with visible heartbeat peaks on both sides & center -->
+            <path class="contact-ecg-baseline" d="M 0,90 L 80,90 L 100,80 L 115,100 L 125,90 L 140,90 L 150,48 L 165,145 L 180,6 L 195,122 L 208,76 L 220,90 L 250,90 L 270,78 L 290,90 L 430,90 L 450,80 L 465,100 L 475,90 L 490,90 L 500,50 L 515,142 L 530,10 L 545,120 L 558,76 L 570,90 L 600,90 L 620,78 L 640,90 L 790,90 L 810,80 L 825,100 L 835,90 L 850,90 L 860,50 L 875,142 L 890,10 L 905,120 L 918,76 L 930,90 L 960,90 L 980,78 L 1000,90 L 1160,90 L 1180,80 L 1195,100 L 1205,90 L 1220,90 L 1230,48 L 1245,145 L 1260,6 L 1275,122 L 1288,76 L 1300,90 L 1330,90 L 1350,78 L 1370,90 L 1440,90" />
 
-            <!-- Dynamic Traveling Pulse Ray (Heartbeat Beam) -->
-            <path class="contact-ecg-ray" d="M 0,90 L 320,90 L 340,84 L 350,96 L 360,90 L 400,90 L 415,55 L 430,135 L 450,15 L 470,115 L 485,78 L 500,90 L 550,90 L 570,78 L 590,90 L 880,90 L 900,84 L 910,96 L 920,90 L 960,90 L 975,55 L 990,135 L 1010,15 L 1030,115 L 1045,78 L 1060,90 L 1110,90 L 1130,78 L 1150,90 L 1440,90" />
+            <!-- Dynamic Traveling Pulse Ray (Glowing Heartbeat Beam) -->
+            <path class="contact-ecg-ray" d="M 0,90 L 80,90 L 100,80 L 115,100 L 125,90 L 140,90 L 150,48 L 165,145 L 180,6 L 195,122 L 208,76 L 220,90 L 250,90 L 270,78 L 290,90 L 430,90 L 450,80 L 465,100 L 475,90 L 490,90 L 500,50 L 515,142 L 530,10 L 545,120 L 558,76 L 570,90 L 600,90 L 620,78 L 640,90 L 790,90 L 810,80 L 825,100 L 835,90 L 850,90 L 860,50 L 875,142 L 890,10 L 905,120 L 918,76 L 930,90 L 960,90 L 980,78 L 1000,90 L 1160,90 L 1180,80 L 1195,100 L 1205,90 L 1220,90 L 1230,48 L 1245,145 L 1260,6 L 1275,122 L 1288,76 L 1300,90 L 1330,90 L 1350,78 L 1370,90 L 1440,90" />
           </svg>
         </div>
       </div>
