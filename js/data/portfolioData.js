@@ -170,10 +170,11 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Hackathon Participant — CODE RUSH 2.0",
-      organization: "BBD University • Team JAKY",
+      organization: "BBD University (BBDNIIT) • Team JAKY",
       type: "Inter-College Hackathon",
       period: "2023",
-      description: "Participated in CODE RUSH 2.0 at BBD University with Team JAKY. Built an AI Interviewer prototype, engineering role-specific prompt templates and an adaptive difficulty algorithm that dynamically adjusts interview questions based on candidate performance."
+      description: "Participated in CODE RUSH 2.0 at BBD University (BBDNIIT) with Team JAKY. Built an AI Interviewer prototype, engineering role-specific prompt templates and an adaptive difficulty algorithm that dynamically adjusts interview questions based on candidate performance.",
+      certificate: "assets/certificates/coderush2-certificate.jpg"
     }
   ],
 
