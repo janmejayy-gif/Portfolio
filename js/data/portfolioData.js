@@ -183,6 +183,13 @@ window.PORTFOLIO_DATA = {
       type: "Leadership & Community",
       period: "2024 – Present",
       description: "Serving as Student Ambassador at Career Catalyst Club, actively driving campus engagement, technical workshops, industry mentorship outreach, and peer learning initiatives for aspiring engineers."
+    },
+    {
+      title: "Hackathon Participant — CODE RUSH 2.0",
+      organization: "BBD University • Team JAKY",
+      type: "Inter-College Hackathon",
+      period: "2023",
+      description: "Participated in CODE RUSH 2.0 at BBD University with Team JAKY. Built an AI Interviewer prototype, engineering role-specific prompt templates and an adaptive difficulty algorithm that dynamically adjusts interview questions based on candidate performance."
     }
   ],
 
