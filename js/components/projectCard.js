@@ -10,24 +10,13 @@ window.Components.createProjectCard = function(project) {
     </span>
   `).join('');
 
-  const demoButtonHtml = project.demoUrl 
-    ? `<a href="${project.demoUrl}" target="_blank" rel="noopener noreferrer" 
-          class="text-xs font-semibold text-slate-900 hover:text-indigo-600 inline-flex items-center gap-1.5 transition-colors focus-visible:ring-2 focus-visible:ring-slate-900 rounded-lg p-1"
-          aria-label="Open live demo for ${project.name}">
-         <span>Live Demo</span>
-         <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-       </a>`
-    : `<span class="text-xs text-slate-400 font-mono inline-flex items-center gap-1.5 cursor-default select-none" title="Live demo pending deployment">
-         <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
-         <span>Demo Pending</span>
-       </span>`;
-
   const githubButtonHtml = project.githubUrl
     ? `<a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" 
-          class="btn-secondary px-3.5 py-2 rounded-xl text-xs font-medium inline-flex items-center gap-1.5 hover:text-slate-900 transition-colors focus-visible:ring-2 focus-visible:ring-slate-900"
+          class="btn-secondary px-4 py-2.5 rounded-xl text-xs font-semibold inline-flex items-center gap-2 hover:text-slate-900 transition-colors focus-visible:ring-2 focus-visible:ring-slate-900 shadow-xs"
           aria-label="View source code repository for ${project.name}">
-         <i data-lucide="github" class="w-3.5 h-3.5"></i>
-         <span>Repository</span>
+         <i data-lucide="github" class="w-4 h-4"></i>
+         <span>View Repository</span>
+         <i data-lucide="external-link" class="w-3.5 h-3.5 opacity-60"></i>
        </a>`
     : `<span class="text-xs text-slate-400 font-mono">Private Repo</span>`;
 
@@ -82,12 +71,9 @@ window.Components.createProjectCard = function(project) {
         </div>
       </div>
 
-      <!-- Card Action Footer -->
+      <!-- Card Action Footer (Repository Link Only) -->
       <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
         ${githubButtonHtml}
-        <div>
-          ${demoButtonHtml}
-        </div>
       </div>
     </article>
   `;

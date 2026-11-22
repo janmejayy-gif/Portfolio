@@ -90,8 +90,7 @@ window.PORTFOLIO_DATA = {
       problemStatement: "Small-scale agricultural producers are constrained by multi-tier middlemen, opaque regional wholesale pricing, complex digital literacy barriers, and fragmented logistics with no localized spatial mapping.",
       solution: "Engineered an end-to-end Agritech platform where I led the responsive frontend development, integrated interactive Geo Maps for farm-to-mandi tracking, engineered a real-time negotiation chat system, and implemented an AI Voice Assistant for hands-free local dialect accessibility.",
       techStack: ["React", "JavaScript", "Geo Maps API", "AI Voice Assistant", "Real-Time Chat", "Node.js", "Express", "Tailwind CSS"],
-      githubUrl: "https://github.com/janmejayy-gif/Portfolio",
-      demoUrl: null,
+      githubUrl: "https://github.com/Erkarancoder/AgriFair",
       status: "Hackathon Winner",
       verified: true
     },
@@ -104,8 +103,7 @@ window.PORTFOLIO_DATA = {
       problemStatement: "Infrastructure and development projects frequently stall because historical land acquisition data, legal disputes, and regulatory compliance risks are siloed and difficult to forecast.",
       solution: "Developed an analytical monitoring engine that evaluates regional land acquisition parameters, cross-references historical dispute datasets, and generates data-backed risk scores to identify delays before capital commitment.",
       techStack: ["Python", "Pandas", "Scikit-learn", "JavaScript", "SQL", "Tailwind CSS"],
-      githubUrl: "https://github.com",
-      demoUrl: null,
+      githubUrl: "https://github.com/janmejayy-gif/SIH26016",
       status: "Analytical Model & Prototype",
       verified: true
     }
@@ -154,6 +152,14 @@ window.PORTFOLIO_DATA = {
         { src: "assets/hackathon/zinnovatio-certificate.jpg", label: "Official Certificate" },
         { src: "assets/hackathon/zinnovatio-venue.jpg", label: "Campus Arena" }
       ]
+    },
+    {
+      title: "Hackathon Participant — HackWithHyderabad 3.0",
+      organization: "Microsoft Office, Hyderabad • Hack With India × Devnovate",
+      type: "Technology Hackathon",
+      period: "2026",
+      description: "Participated in HackWithHyderabad 3.0, an intensive 8-hour technology hackathon organized by Hack With India × Devnovate, held on-site at the Microsoft Office, Hyderabad.",
+      certificate: "assets/certificates/hackwithhyderabad-certificate.jpg"
     },
     {
       title: "Ambassador",
