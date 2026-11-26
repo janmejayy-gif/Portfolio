@@ -29,14 +29,14 @@ window.PORTFOLIO_DATA = {
 
   about: {
     narrative: [
-      "I am a dedicated Full-Stack Developer with a deep interest in software architecture, algorithm design, and applied machine learning. Currently pursuing my Bachelor of Technology in Computer Science & Engineering (Data Science) at Goel Institute of Technology & Management, Lucknow, I focus on transforming complex system requirements into clean, scalable, and responsive digital products.",
-      "My engineering philosophy centers around continuous problem solving. Whether designing modular RESTful APIs with Node.js and Java, structuring intuitive client interfaces in React and Tailwind CSS, or extracting actionable patterns using Python and Scikit-learn, I prioritize maintainability, performance, and real-world utility.",
-      "I actively explore modern web frameworks, data modeling techniques, and predictive algorithms, constantly expanding my technical breadth to develop tools that create tangible impact across critical domains like agriculture, land administration, and urban logistics."
+      "I am a passionate Full-Stack MERN Developer and Computer Science & Engineering (Data Science) undergraduate at Goel Institute of Technology & Management, Lucknow. I specialize in turning complex product requirements into scalable, responsive, and reliable digital systems.",
+      "My core engineering stack is rooted in MongoDB, Express.js, React.js, and Node.js (MERN), backed by robust RESTful APIs, clean modular component architecture with Tailwind CSS, and Java. I emphasize performance, seamless user experience, and secure database modeling.",
+      "Blending modern full-stack development with AI/ML, Python data exploration, and rigorous Data Structures & Algorithms (DSA), I build technology solutions for practical real-world impact — from smart agricultural marketplaces (AgriFair) to digital land administration systems (LADI)."
     ],
     pillars: [
-      { title: "Full-Stack Engineering", desc: "End-to-end web architecture from reactive frontend interfaces to resilient backend APIs." },
-      { title: "Algorithmic Thinking", desc: "Strong focus on Data Structures & Algorithms, optimal complexity, and clean code." },
-      { title: "Data Science & AI", desc: "Data wrangling, statistical analysis, and applied predictive modeling in Python." }
+      { title: "MERN Stack Architecture", desc: "End-to-end full-stack web applications with React.js, Node.js, Express.js, and MongoDB." },
+      { title: "Applied AI & Data Science", desc: "Machine learning exploration, statistical analysis, and data-driven insights using Python." },
+      { title: "DSA & Problem Solving", desc: "Rigorous algorithmic thinking, clean code design, and scalable system architecture." }
     ]
   },
 
