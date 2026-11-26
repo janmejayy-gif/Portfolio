@@ -42,41 +42,39 @@ window.PORTFOLIO_DATA = {
 
   skills: {
     frontend: [
-      { name: "React", detail: "Component Architecture & Hooks" },
-      { name: "JavaScript (ES6+)", detail: "Modern Syntax & Async Flow" },
-      { name: "Tailwind CSS", detail: "Responsive & Modern UI" },
-      { name: "HTML5", detail: "Semantic Markup & Accessibility" },
-      { name: "CSS3", detail: "Flexbox, Grid & Animations" }
+      { name: "React.js", detail: "Hooks, Context & Component Lifecycle" },
+      { name: "JavaScript (ES6+)", detail: "Async/Await, Promises & Modern Syntax" },
+      { name: "Tailwind CSS", detail: "Utility-First, Responsive & Modern UI" },
+      { name: "HTML5 & CSS3", detail: "Semantic Web, Flexbox & CSS Grid" }
     ],
     backend: [
-      { name: "Node.js", detail: "Runtime Environment & Event Loop" },
-      { name: "Express.js", detail: "Server Routing & Middleware" },
-      { name: "Spring Boot", detail: "Java Enterprise Framework" },
-      { name: "REST APIs", detail: "API Design, Auth & Integration" }
-    ],
-    programmingLanguages: [
-      { name: "Java", detail: "Core, OOPs, Collections & DSA" },
-      { name: "Python", detail: "Data Analysis & Scripting" },
-      { name: "JavaScript", detail: "Full-Stack Web Development" },
-      { name: "SQL", detail: "Relational Queries & Schemas" }
+      { name: "Node.js", detail: "Event-Driven Server Runtime & Event Loop" },
+      { name: "Express.js", detail: "REST APIs, Routing, CORS & Middleware" },
+      { name: "RESTful APIs", detail: "JWT Auth, Endpoint Design & Integration" },
+      { name: "Spring Boot", detail: "Java Enterprise Backend Services" }
     ],
     database: [
-      { name: "MongoDB", detail: "Document Storage & Mongoose" },
-      { name: "MySQL", detail: "Relational Database Management" },
-      { name: "SQL", detail: "Schema Design & Indexing" }
+      { name: "MongoDB", detail: "NoSQL Document Storage & Aggregation" },
+      { name: "Mongoose ODM", detail: "Schema Modeling, Validation & Hooks" },
+      { name: "MySQL / SQL", detail: "Relational Queries & Normalized Schemas" }
+    ],
+    programmingLanguages: [
+      { name: "Java", detail: "Core OOPs, Collections & DSA" },
+      { name: "JavaScript", detail: "Full-Stack MERN Web Development" },
+      { name: "Python", detail: "Data Analytics, Scripting & Machine Learning" },
+      { name: "DSA", detail: "Problem Solving, Time & Space Optimization" }
     ],
     aiAndDataScience: [
-      { name: "Python", detail: "Scientific & Analytical Libraries" },
-      { name: "Pandas", detail: "Data Manipulation & Cleaning" },
-      { name: "NumPy", detail: "Multidimensional Vector Arrays" },
-      { name: "Scikit-learn", detail: "Supervised & Unsupervised ML" },
-      { name: "Matplotlib", detail: "Data & Statistical Visualization" }
+      { name: "Scikit-learn", detail: "Supervised/Unsupervised ML Modeling" },
+      { name: "Pandas & NumPy", detail: "Data Wrangling & Vector Computations" },
+      { name: "Matplotlib & Seaborn", detail: "Statistical & Data Visualization" },
+      { name: "Exploratory Data Analysis", detail: "Feature Engineering & Data Insights" }
     ],
     developmentTools: [
-      { name: "Git", detail: "Distributed Version Control" },
-      { name: "GitHub", detail: "Repository Management & Collaboration" },
-      { name: "VS Code", detail: "Primary Integrated Development Environment" },
-      { name: "Postman", detail: "API Testing & Endpoint Documentation" }
+      { name: "Git & GitHub", detail: "Distributed Version Control & Collaboration" },
+      { name: "Postman", detail: "API Testing, Mocking & Documentation" },
+      { name: "VS Code", detail: "Primary Code Editor & Debugging" },
+      { name: "npm Ecosystem", detail: "Package Management & Build Toolchains" }
     ]
   },
 
