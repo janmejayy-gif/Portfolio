@@ -11,7 +11,7 @@ window.PORTFOLIO_DATA = {
     headline: "Building Modern Web Applications with MERN Stack & AI",
     conciseIntro: "I build scalable, responsive web applications using MongoDB, Express.js, React.js and Node.js, while exploring AI/ML and data-driven technologies to solve real-world problems.",
     location: "Lucknow, Uttar Pradesh, India",
-    email: "janmejaytiwari@gmail.com",
+    email: "janam3152@gmail.com",
     github: "https://github.com/janmejayy-gif",
     linkedin: "https://www.linkedin.com/in/janmejay-tiwari-yogi-445a70396",
     resumeUrl: "#contact"
@@ -181,6 +181,6 @@ window.PORTFOLIO_DATA = {
   socialLinks: [
     { name: "GitHub", url: "https://github.com/janmejayy-gif", icon: "github", label: "Visit GitHub Profile" },
     { name: "LinkedIn", url: "https://www.linkedin.com/in/janmejay-tiwari-yogi-445a70396", icon: "linkedin", label: "Connect on LinkedIn" },
-    { name: "Email", url: "mailto:janmejaytiwari@gmail.com", icon: "mail", label: "Send Email" }
+    { name: "Email", url: "mailto:janam3152@gmail.com", icon: "mail", label: "Send Email" }
   ]
 };

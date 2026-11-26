@@ -232,13 +232,13 @@ document.addEventListener('DOMContentLoaded', () => {
       // We offer pre-filled email draft and direct copy.
       const subject = encodeURIComponent(`Portfolio Inquiry from ${nameVal}`);
       const body = encodeURIComponent(`Hello Janmejay,\n\nName: ${nameVal}\nEmail: ${emailVal}\n\nMessage:\n${messageVal}\n\nSent via Portfolio Website`);
-      const mailtoUrl = `mailto:janmejaytiwari@gmail.com?subject=${subject}&body=${body}`;
+      const mailtoUrl = `mailto:janam3152@gmail.com?subject=${subject}&body=${body}`;
 
       // Open email client with prefilled body
       window.location.href = mailtoUrl;
 
       // Display transparent confirmation
-      window.showToast(`Draft created! Opening your email client to send to janmejaytiwari@gmail.com.`, true, 5000);
+      window.showToast(`Draft created! Opening your email client to send to janam3152@gmail.com.`, true, 5000);
 
       // Offer fallback copy
       contactForm.reset();
